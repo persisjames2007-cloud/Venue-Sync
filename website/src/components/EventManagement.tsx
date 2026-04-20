@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useAppContext } from "@/context/AppContext";
 
 export default function EventManagement() {
@@ -21,13 +22,13 @@ export default function EventManagement() {
     price: 0,
     type: "Free" as "Free" | "Paid",
     imageUrl: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800",
-    status: "Draft" as "Active" | "Draft",
+    status: "Draft" as "Active" | "Draft" | "Completed",
     layoutUrl: "",
-    points: [] as any[]
+    points: [] as { id: string; name: string; type: "Emergency" | "Gate" | "Stall" | "Food Court" | "Washroom"; location: string }[]
   });
 
   const [pointName, setPointName] = useState("");
-  const [pointType, setPointType] = useState<any>("Gate");
+  const [pointType, setPointType] = useState<"Emergency" | "Gate" | "Stall" | "Food Court" | "Washroom">("Gate");
   const [pointLocation, setPointLocation] = useState("");
 
   const resetForm = () => {
@@ -51,8 +52,12 @@ export default function EventManagement() {
     setIsAdding(false);
   };
 
-  const handleEdit = (event: any) => {
-    setFormData({ ...event });
+  const handleEdit = (event: typeof events[0]) => {
+    setFormData({
+      ...event,
+      points: event.points || [],
+      layoutUrl: event.layoutUrl || "",
+    });
     setEditingId(event.id);
     setIsAdding(true);
   };
@@ -81,7 +86,7 @@ export default function EventManagement() {
   };
 
   const removePoint = (id: string) => {
-    setFormData(prev => ({ ...prev, points: prev.points.filter((p: any) => p.id !== id) }));
+    setFormData(prev => ({ ...prev, points: prev.points.filter((p) => p.id !== id) }));
   };
 
   return (
@@ -147,7 +152,7 @@ export default function EventManagement() {
             <h4 className="text-sm font-bold uppercase tracking-widest text-primary">Venue Points (Gates, Stalls, etc.)</h4>
             <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
               <input value={pointName} onChange={e => setPointName(e.target.value)} placeholder="Point Name" className="bg-surface p-3 rounded-lg text-xs" />
-              <select value={pointType} onChange={e => setPointType(e.target.value)} className="bg-surface p-3 rounded-lg text-xs">
+              <select value={pointType} onChange={e => setPointType(e.target.value as "Emergency" | "Gate" | "Stall" | "Food Court" | "Washroom")} className="bg-surface p-3 rounded-lg text-xs">
                 <option>Gate</option>
                 <option>Stall</option>
                 <option>Food Court</option>
@@ -158,7 +163,7 @@ export default function EventManagement() {
               <button type="button" onClick={addPoint} className="bg-surface-container-highest p-3 rounded-lg text-[10px] font-bold uppercase">Add Point</button>
             </div>
             <div className="flex flex-wrap gap-2 mt-4">
-              {formData.points.map((p: any) => (
+              {formData.points.map((p) => (
                 <div key={p.id} className="bg-surface p-2 px-3 rounded-full border border-outline-variant/30 flex items-center gap-2 text-[10px] font-medium">
                   <span className="opacity-60">{p.type}:</span> {p.name}
                   <button type="button" onClick={() => removePoint(p.id)} className="material-symbols-outlined text-xs text-error">close</button>
@@ -193,8 +198,8 @@ export default function EventManagement() {
           events.map(event => (
             <div key={event.id} className="bg-surface-container-low p-6 rounded-3xl border border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-6 group">
               <div className="flex gap-6 items-center">
-                <div className="w-16 h-16 rounded-2xl bg-surface-container-high overflow-hidden border border-outline-variant/10">
-                  <img src={event.imageUrl} alt="" className="w-full h-full object-cover" />
+                <div className="w-16 h-16 relative rounded-2xl bg-surface-container-high overflow-hidden border border-outline-variant/10">
+                  <Image src={event.imageUrl} alt="" fill className="object-cover" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2 mb-1">

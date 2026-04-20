@@ -46,7 +46,7 @@ export default function FacilitiesPage() {
                 </div>
                 
                 <div className="flex flex-col gap-1">
-                   <p className="text-[10px] font-black uppercase tracking-widest opacity-30">{f.type} // {f.location}</p>
+                   <p className="text-[10px] font-black uppercase tracking-widest opacity-30">{f.type} {/* // */} {f.location}</p>
                    {f.status === 'Operational' && (
                      <div className="flex items-center gap-3">
                         <div className="flex-1 h-1 bg-surface-container-high rounded-full overflow-hidden">

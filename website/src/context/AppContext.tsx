@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { firebaseAuth, firestore, firebaseMessaging, crashlytics, googleAnalytics } from "@/lib/firebase";
+import { firebaseAuth, firestore, crashlytics, googleAnalytics } from "@/lib/firebase";
 
 type Role = "attendee" | "organizer" | "staff";
 
@@ -115,6 +115,8 @@ interface AppContextType {
   firebaseStatus: "connected" | "syncing" | "offline";
   reviews: Review[];
   addReview: (review: Review) => void;
+  isSimpleUI: boolean;
+  toggleSimpleUI: () => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -124,6 +126,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [role, setRole] = useState<Role>("attendee");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isEmergency, setIsEmergency] = useState(false);
+  const [isSimpleUI, setIsSimpleUI] = useState(false);
   const [firebaseStatus, setFirebaseStatus] = useState<"connected" | "syncing" | "offline">("connected");
   
   const [users, setUsers] = useState<User[]>([]);
@@ -143,22 +146,28 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     { user: "Maya K.", rating: 4, category: "Food", text: "Neon Sushi has the best tactical rolls.", time: "1h ago" },
   ]);
 
-  // 2. PERSISTENCE EFFECTS
+  // 2. PERSISTENCE EFFECTS — use startTransition to batch state restoration
+  const isInitialized = React.useRef(false);
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined" || isInitialized.current) return;
+    isInitialized.current = true;
     const savedUsers = localStorage.getItem("vs_users");
     const savedEvents = localStorage.getItem("vs_events");
     const savedRegs = localStorage.getItem("vs_regs");
     const savedRole = localStorage.getItem("vs_role");
     const savedLoggedIn = localStorage.getItem("vs_isLoggedIn");
     const savedProfile = localStorage.getItem("vs_profile");
-    
-    if (savedUsers) setUsers(JSON.parse(savedUsers));
-    if (savedEvents) setEvents(JSON.parse(savedEvents));
-    if (savedRegs) setRegisteredEventIds(JSON.parse(savedRegs));
-    if (savedRole) setRole(JSON.parse(savedRole) as Role);
-    if (savedLoggedIn) setIsLoggedIn(JSON.parse(savedLoggedIn));
-    if (savedProfile) setUserProfile(JSON.parse(savedProfile));
+    const savedSimpleUI = localStorage.getItem("vs_simpleUI");
+
+    React.startTransition(() => {
+      if (savedUsers) setUsers(JSON.parse(savedUsers));
+      if (savedEvents) setEvents(JSON.parse(savedEvents));
+      if (savedRegs) setRegisteredEventIds(JSON.parse(savedRegs));
+      if (savedRole) setRole(JSON.parse(savedRole) as Role);
+      if (savedLoggedIn) setIsLoggedIn(JSON.parse(savedLoggedIn));
+      if (savedProfile) setUserProfile(JSON.parse(savedProfile));
+      if (savedSimpleUI) setIsSimpleUI(JSON.parse(savedSimpleUI));
+    });
   }, []);
 
   useEffect(() => {
@@ -169,7 +178,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("vs_role", JSON.stringify(role));
     localStorage.setItem("vs_isLoggedIn", JSON.stringify(isLoggedIn));
     localStorage.setItem("vs_profile", JSON.stringify(userProfile));
-  }, [users, events, registeredEventIds, role, isLoggedIn, userProfile]);
+    localStorage.setItem("vs_simpleUI", JSON.stringify(isSimpleUI));
+  }, [users, events, registeredEventIds, role, isLoggedIn, userProfile, isSimpleUI]);
 
   // 3. OPERATIONAL EFFECTS
   useEffect(() => {
@@ -214,8 +224,15 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     return true;
   };
 
+  // ID generator (avoids impure Math.random lint errors by using a stable counter + timestamp)
+  const idCounter = React.useRef(0);
+  const generateId = () => {
+    idCounter.current += 1;
+    return Date.now().toString(36) + idCounter.current.toString(36);
+  };
+
   const addEvent = async (e: Omit<Event, "id">) => {
-    const id = Math.random().toString(36).substr(2, 9);
+    const id = generateId();
     await firestore.collection("events").add({ id, ...e });
     setEvents(prev => [...prev, { id, ...e }]);
     if (e.status === "Active") {
@@ -241,12 +258,12 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   };
 
   const addNotification = (n: Omit<Notification, "id">) => {
-    const id = Math.random().toString(36).substr(2, 9);
+    const id = generateId();
     setNotifications((prev) => [{ id, ...n }, ...prev]);
   };
 
   const addOrder = async (o: Omit<Order, "id" | "time" | "status" | "user">) => {
-    const id = Math.random().toString(36).substr(2, 9);
+    const id = generateId();
     const newOrder: Order = { id, ...o, status: "Preparing", time: "Just Now", user: userProfile.name };
     await firestore.collection("orders").add(newOrder);
     setOrders(prev => [newOrder, ...prev]);
@@ -258,7 +275,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   };
 
   const addComplaint = async (c: Omit<Complaint, "id" | "time" | "status" | "user">) => {
-     const id = Math.random().toString(36).substr(2, 9);
+     const id = generateId();
      const newComplaint: Complaint = { id, ...c, status: "Pending", time: "Just Now", user: userProfile.name };
      setComplaints(prev => [newComplaint, ...prev]);
   };
@@ -281,6 +298,10 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     setReviews(prev => [r, ...prev]);
   };
 
+  const toggleSimpleUI = () => {
+    setIsSimpleUI(prev => !prev);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -295,7 +316,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         userProfile,
         isEmergency, toggleEmergency,
         firebaseStatus,
-        reviews, addReview
+        reviews, addReview,
+        isSimpleUI, toggleSimpleUI
       }}
     >
       <div className={`${isEmergency ? 'emergency-glow' : ''}`}>

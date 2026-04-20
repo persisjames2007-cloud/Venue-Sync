@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import { useAppContext } from "@/context/AppContext";
 import { useRouter } from "next/navigation";
 import EventManagement from "@/components/EventManagement";
+import Image from "next/image";
 
 export default function AdminPage() {
   const router = useRouter();
@@ -57,7 +58,7 @@ export default function AdminPage() {
                       </div>
                       <select 
                         value={f.status}
-                        onChange={(e) => updateFacilityStatus(f.id, e.target.value as any)}
+                        onChange={(e) => updateFacilityStatus(f.id, e.target.value as "Operational" | "Maintenance" | "Restricted")}
                         className="bg-surface border-none rounded-lg text-xs font-bold p-2 outline-none"
                       >
                          <option value="Operational">Operational</option>
@@ -90,10 +91,11 @@ export default function AdminPage() {
               <div className="mt-4 p-4 bg-surface-container-high rounded-xl border border-outline-variant/10">
                  <h4 className="text-xs font-black uppercase tracking-widest text-primary mb-2">Venue Map Terminal</h4>
                  <div onClick={() => router.push('/map')} className="h-40 bg-surface-container-highest rounded-lg overflow-hidden relative group cursor-pointer">
-                    <img 
+                    <Image 
                       src="https://lh3.googleusercontent.com/aida-public/AB6AXuANG2d4zFnKLecAbTzQMflDHYDarlg7Zkit5bjHZcd7Z8itpbPbXRLr9LprYyDC5rz7xTP6yfzjsUjtp7dPLLbuNWCPF2C56C-I0ISCtm0J4U4vKG3RVy_5Yy2sq4B45P-47nzn0JtXHSI9YP66GVTIYZD_7EjKVDHT3wA6XLOjLFlZQPhIMjlepT-akt-VM3FkqktXmfKvLU2KFtZOha29lt-Sx5mertj2b7RkP0my5Sat8s7sJPnosGKCLHZb_WFcOZCp8xFQsQ2l" 
                       alt="Map"
-                      className="w-full h-full object-cover opacity-30 contrast-125 group-hover:scale-110 transition-transform duration-700"
+                      fill
+                      className="object-cover opacity-30 contrast-125 group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
                        <span className="bg-primary text-on-primary-fixed px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest">Live Feed</span>

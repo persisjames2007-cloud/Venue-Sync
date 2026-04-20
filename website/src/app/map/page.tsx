@@ -4,6 +4,20 @@ import Header from "@/components/Header";
 import { useState, useEffect, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Script from "next/script";
+import Image from "next/image";
+
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    L: any;
+    googleLayers: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      roadmapTiles: any;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      satelliteTiles: any;
+    };
+  }
+}
 
 const INTERIOR_POIS = {
   "Main Stage": { coords: [40.7588, -74.0024], type: "Stage", icon: "theater_comedy" },
@@ -14,10 +28,11 @@ const INTERIOR_POIS = {
 function MapContent() {
   const searchParams = useSearchParams();
   const mapContainer = useRef<HTMLDivElement>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mapInstance = useRef<any>(null);
   const [mapType, setMapType] = useState<"roadmap" | "satellite">("roadmap");
   const [isLoaded, setIsLoaded] = useState(false);
-  const [destPoint, setDestPoint] = useState<string | null>(searchParams.get("poi"));
+  const [, setDestPoint] = useState<string | null>(searchParams.get("poi"));
 
   const userLocation: [number, number] = [40.7572, -74.0040];
 
@@ -49,7 +64,7 @@ function MapContent() {
         className: 'm', 
         html: `<div class="g-pin"><div class="g-pin-dot"></div></div>` 
       });
-      L.marker(data.coords, { icon: pin }).addTo(mapInstance.current).on('click', () => setDestPoint(name));
+      L.marker(data.coords as [number, number], { icon: pin }).addTo(mapInstance.current).on('click', () => setDestPoint(name));
     });
 
     // Pulse User Marker
@@ -60,7 +75,7 @@ function MapContent() {
   };
 
   useEffect(() => {
-    if (!isLoaded) return;
+    if (!isLoaded || !mapInstance.current || !window.googleLayers) return;
     const { roadmapTiles, satelliteTiles } = window.googleLayers;
     if (mapType === 'roadmap') {
       mapInstance.current.removeLayer(satelliteTiles);
@@ -108,9 +123,11 @@ function MapContent() {
              onClick={() => setMapType(mapType === 'roadmap' ? 'satellite' : 'roadmap')}
              className="w-16 h-16 rounded-xl border-2 border-white shadow-lg overflow-hidden relative group"
            >
-              <img 
+              <Image 
                 src={mapType === 'roadmap' ? "https://maps.gstatic.com/tactile/pane/satellite-2x.png" : "https://maps.gstatic.com/tactile/pane/terrain-2x.png"} 
-                className="w-full h-full object-cover transition-transform group-hover:scale-110" 
+                alt="Toggle Map Type"
+                fill
+                className="object-cover transition-transform group-hover:scale-110" 
               />
               <span className="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-white bg-black/20 shadow-inner">
                 {mapType === 'roadmap' ? 'Satellite' : 'Map'}
@@ -121,8 +138,8 @@ function MapContent() {
         {/* Google Maps Right Side Controls */}
         <div className="absolute bottom-24 right-4 z-[2000] flex flex-col gap-2">
            <div className="bg-white shadow-md rounded-md flex flex-col border border-gray-100 overflow-hidden">
-              <button onClick={() => mapInstance.current.zoomIn()} className="p-2 border-b border-gray-100 hover:bg-gray-100"><span className="material-symbols-outlined text-gray-600">add</span></button>
-              <button onClick={() => mapInstance.current.zoomOut()} className="p-2 hover:bg-gray-100"><span className="material-symbols-outlined text-gray-600">remove</span></button>
+              <button onClick={() => mapInstance.current?.zoomIn()} className="p-2 border-b border-gray-100 hover:bg-gray-100"><span className="material-symbols-outlined text-gray-600">add</span></button>
+              <button onClick={() => mapInstance.current?.zoomOut()} className="p-2 hover:bg-gray-100"><span className="material-symbols-outlined text-gray-600">remove</span></button>
            </div>
            
            <button className="bg-white shadow-md rounded-md p-2 border border-gray-100 hover:bg-gray-100 flex items-center justify-center">
@@ -132,7 +149,9 @@ function MapContent() {
 
         {/* Google Bottom Branding */}
         <div className="absolute bottom-2 right-2 z-[2000] flex items-center gap-4 text-[10px] text-gray-500 font-medium bg-white/60 backdrop-blur px-2 rounded-sm shadow-sm">
-           <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" className="h-4 opacity-70" />
+           <div className="relative h-4 w-12">
+             <Image src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" fill className="object-contain opacity-70" />
+           </div>
            <span>Map data ©2026 Google</span>
            <span>Terms</span>
            <span>Privacy</span>
@@ -158,5 +177,3 @@ export default function GoogleMapPage() {
     </Suspense>
   );
 }
-
-declare global { interface Window { L: any; googleLayers: any; } }

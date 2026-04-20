@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import { useAppContext } from "@/context/AppContext";
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function FoodPage() {
   const { addOrder, addNotification } = useAppContext();
@@ -59,10 +60,11 @@ export default function FoodPage() {
           {vendors.map((vendor) => (
             <div key={vendor.name} className="group bg-surface-container-low rounded-[40px] border border-outline-variant/10 overflow-hidden hover:border-primary/40 transition-all duration-500 shadow-xl hover:shadow-primary/5">
               <div className="h-48 overflow-hidden relative">
-                <img 
+                <Image 
                   src={vendor.image} 
                   alt={vendor.name} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 grayscale group-hover:grayscale-0" 
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 grayscale group-hover:grayscale-0" 
                 />
                 <div className="absolute top-4 right-4 bg-surface/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black tracking-widest text-primary border border-primary/20">
                    {vendor.time}

@@ -44,7 +44,7 @@ export default function NotificationsPage() {
                 <div className="flex-1 space-y-2">
                   <div className="flex justify-between items-center">
                     <span className={`text-[10px] font-black uppercase tracking-[0.2em] ${n.type === 'Emergency' ? 'text-error' : 'text-primary opacity-60'}`}>
-                      {n.type} // Transmission Code: {n.id.toUpperCase()}
+                      {n.type} {/* // */} Transmission Code: {n.id.toUpperCase()}
                     </span>
                     <span className="text-[10px] font-bold opacity-30">{n.time}</span>
                   </div>

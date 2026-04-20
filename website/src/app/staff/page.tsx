@@ -123,7 +123,7 @@ export default function StaffPage() {
                          <div className="flex justify-between items-center">
                             <p className="text-[10px] font-bold opacity-40 uppercase tracking-widest italic flex items-center gap-2">
                                <span className="material-symbols-outlined text-sm">location_on</span>
-                               {complaint.location} // Submitted {complaint.time}
+                               {complaint.location} {/* // */} Submitted {complaint.time}
                             </p>
                             <div className="flex gap-2">
                                {complaint.status === 'Pending' && (

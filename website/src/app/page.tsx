@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useAppContext } from "@/context/AppContext";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function LoginPage() {
   const { role, setRole, login, register, isLoggedIn } = useAppContext();
@@ -16,7 +17,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phone] = useState("");
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -58,7 +59,7 @@ export default function LoginPage() {
       {/* Left: Branding */}
       <section className="hidden lg:flex flex-col justify-between p-12 bg-surface-container-lowest relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <img className="w-full h-full object-cover" alt="map" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp9keT5LO--LxcnqrU__ptZ_k2h-vxfNVjTgT5lPF0t6ZIpryxY6_2pv50j7FuhCGt6kdjfNFXvW4n1sRznXGTVCKidw5PgykCQzyd9OurU_L3FBOjHu5hVWbImUn1DbK_Ap2eB-61l1UKtXnsGrwSMPRasAUoPgOlqAL57ILQ-CBsYd1zSbiD912fJVs9l-dnmFAg5ZdALYpwiuqCuH3fpO4RCz78AV4zoNFZ45t2KyJ9JITvhdWQestkBGJrzewC0eOGuoJL7fBk" />
+          <Image className="object-cover" alt="map" fill src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp9keT5LO--LxcnqrU__ptZ_k2h-vxfNVjTgT5lPF0t6ZIpryxY6_2pv50j7FuhCGt6kdjfNFXvW4n1sRznXGTVCKidw5PgykCQzyd9OurU_L3FBOjHu5hVWbImUn1DbK_Ap2eB-61l1UKtXnsGrwSMPRasAUoPgOlqAL57ILQ-CBsYd1zSbiD912fJVs9l-dnmFAg5ZdALYpwiuqCuH3fpO4RCz78AV4zoNFZ45t2KyJ9JITvhdWQestkBGJrzewC0eOGuoJL7fBk" />
         </div>
         <div className="relative z-10 flex items-center gap-3">
           <div className="w-10 h-10 cta-gradient rounded flex items-center justify-center">

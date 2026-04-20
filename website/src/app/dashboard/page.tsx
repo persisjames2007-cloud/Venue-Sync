@@ -4,9 +4,10 @@ import Header from "@/components/Header";
 import { useAppContext } from "@/context/AppContext";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function DashboardPage() {
-  const { notifications, role, userProfile, isEmergency, events, isLoggedIn, registerForEvent, registeredEventIds } = useAppContext();
+  const { notifications, userProfile, isEmergency, events, isLoggedIn, registerForEvent, registeredEventIds } = useAppContext();
   const [currentTime, setCurrentTime] = useState(new Date());
   const [showPass, setShowPass] = useState<string | null>(null);
   const router = useRouter();
@@ -101,8 +102,8 @@ export default function DashboardPage() {
                 activeEvents.map((event) => (
                   <div key={event.id} className="bg-surface-container-low p-6 rounded-3xl border border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-6 group hover:border-primary/40 transition-all">
                     <div className="flex gap-6 items-center">
-                      <div className="w-16 h-16 rounded-2xl bg-primary/10 flex flex-col items-center justify-center text-primary border border-primary/20 shrink-0 overflow-hidden">
-                         <img src={event.imageUrl} alt="" className="w-full h-full object-cover" />
+                      <div className="w-16 h-16 relative rounded-2xl bg-primary/10 flex flex-col items-center justify-center text-primary border border-primary/20 shrink-0 overflow-hidden">
+                         <Image src={event.imageUrl} alt="" fill className="object-cover" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
@@ -190,7 +191,7 @@ export default function DashboardPage() {
                    <div className="p-6 bg-white rounded-3xl inline-flex items-center justify-center border-4 border-surface-container-high">
                       <div className="w-40 h-40 bg-black grid grid-cols-8 grid-rows-8 gap-1 p-2">
                          {Array.from({ length: 64 }).map((_, i) => (
-                           <div key={i} className={`rounded-sm ${Math.random() > 0.5 ? 'bg-white' : 'bg-transparent'}`} />
+                           <div key={i} className={`rounded-sm ${(i * 7 + 3) % 2 === 0 ? 'bg-white' : 'bg-transparent'}`} />
                          ))}
                       </div>
                    </div>
@@ -219,7 +220,7 @@ export default function DashboardPage() {
                   <div className="space-y-3">
                      <h4 className="text-[10px] font-black uppercase tracking-widest text-primary px-1">Tactical Venue Points</h4>
                      <div className="grid grid-cols-1 gap-2">
-                        {events.find(e => e.id === showPass)?.points?.map((p: any) => (
+                        {events.find(e => e.id === showPass)?.points?.map((p: { id: string; name: string; type: string; location: string }) => (
                           <div key={p.id} className="flex items-center justify-between p-3 bg-surface-container-low rounded-xl border border-outline-variant/10">
                              <div className="flex items-center gap-3">
                                 <span className="material-symbols-outlined text-sm opacity-60">

@@ -107,7 +107,7 @@ export default function ReviewsPage() {
                      </div>
                      <span className="text-[10px] uppercase tracking-widest text-on-surface-variant">{review.time}</span>
                   </div>
-                  <p className="text-on-surface-variant leading-relaxed">"{review.text}"</p>
+                  <p className="text-on-surface-variant leading-relaxed">&ldquo;{review.text}&rdquo;</p>
                 </div>
               ))}
            </div>

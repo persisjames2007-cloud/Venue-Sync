@@ -1,12 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useAppContext } from "@/context/AppContext";
 
 export default function Header() {
   const pathname = usePathname();
-  const router = useRouter();
   const { role, isEmergency, logout } = useAppContext();
 
   const attendeeLinks = [

@@ -4,9 +4,10 @@ import Header from "@/components/Header";
 import { useAppContext } from "@/context/AppContext";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function ComprehensiveEventPage() {
-  const { role, isLoggedIn, events, addEvent } = useAppContext();
+  const { role, isLoggedIn, addEvent } = useAppContext();
   const router = useRouter();
   const [isPreview, setIsPreview] = useState(false);
 
@@ -83,11 +84,11 @@ export default function ComprehensiveEventPage() {
            
            <div className="bg-surface-container-low rounded-[40px] overflow-hidden border border-outline-variant/10 shadow-2xl">
               <div className="h-80 relative">
-                 <img src={formData.imageUrl} className="w-full h-full object-cover" />
+                 <Image src={formData.imageUrl} alt="Event banner" fill className="object-cover" />
                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b0c0d] via-transparent" />
                  <div className="absolute bottom-8 left-8 right-8">
                     <span className="bg-primary/20 backdrop-blur-md px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-primary border border-primary/20 mb-4 inline-block">
-                       {formData.category} // {formData.type}
+                       {formData.category} {/* // */} {formData.type}
                     </span>
                     <h1 className="text-5xl font-black tracking-tighter text-white">{formData.name}</h1>
                  </div>
@@ -312,7 +313,7 @@ export default function ComprehensiveEventPage() {
   );
 }
 
-function FormInput({ label, type, value, onChange, placeholder }: { label: string, type: string, value: any, onChange: (v: any) => void, placeholder?: string }) {
+function FormInput({ label, type, value, onChange, placeholder }: { label: string, type: string, value: string, onChange: (v: string) => void, placeholder?: string }) {
   return (
     <div className="space-y-2">
       <label className="text-[10px] font-black uppercase tracking-widest opacity-50 ml-2">{label}</label>
