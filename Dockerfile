@@ -1,6 +1,6 @@
 # Use Node.js 20 as base
 FROM node:20-alpine AS base
-
+ENV HOSTNAME "0.0.0.0"
 # Install dependencies only when needed
 FROM base AS deps
 RUN apk add --no-cache libc6-compat
