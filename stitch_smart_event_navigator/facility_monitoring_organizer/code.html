@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VenueSync | Facility Monitoring</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-primary-fixed": "#001452",
+                "surface-container-low": "#181c22",
+                "on-primary": "#002682",
+                "primary-fixed": "#dde1ff",
+                "surface-container-lowest": "#0a0e14",
+                "secondary-container": "#343d96",
+                "tertiary-container": "#007639",
+                "on-secondary-container": "#a8afff",
+                "on-error-container": "#ffdad6",
+                "surface-tint": "#b7c4ff",
+                "on-primary-fixed-variant": "#0038b6",
+                "on-secondary-fixed": "#000767",
+                "error-container": "#93000a",
+                "secondary": "#bdc2ff",
+                "tertiary-fixed": "#62ff96",
+                "surface-bright": "#353940",
+                "on-tertiary-fixed": "#00210b",
+                "outline": "#8d90a2",
+                "surface-container-high": "#262a31",
+                "primary-container": "#0052ff",
+                "on-primary-container": "#dfe3ff",
+                "surface-container": "#1c2026",
+                "on-surface-variant": "#c3c5d9",
+                "surface-variant": "#31353c",
+                "on-secondary-fixed-variant": "#343d96",
+                "tertiary": "#00e475",
+                "surface-container-highest": "#31353c",
+                "on-tertiary-fixed-variant": "#005226",
+                "secondary-fixed": "#e0e0ff",
+                "inverse-surface": "#dfe2eb",
+                "background": "#10141a",
+                "on-tertiary": "#003918",
+                "on-surface": "#dfe2eb",
+                "primary": "#b7c4ff",
+                "secondary-fixed-dim": "#bdc2ff",
+                "surface": "#10141a",
+                "error": "#ffb4ab",
+                "primary-fixed-dim": "#b7c4ff",
+                "inverse-primary": "#004ced",
+                "on-tertiary-container": "#78ff9f",
+                "on-error": "#690005",
+                "surface-dim": "#10141a",
+                "on-secondary": "#1b247f",
+                "inverse-on-surface": "#2d3137",
+                "tertiary-fixed-dim": "#00e475",
+                "outline-variant": "#434656",
+                "on-background": "#dfe2eb"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "fontFamily": {
+                "headline": ["Manrope"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-layering-no-borders { border: none !important; }
+        .glassmorphism-blur-24px { backdrop-filter: blur(24px); }
+        .pulse-on-active { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .7; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary">
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-[#181c22] flex flex-col p-4 z-40 hidden md:flex border-none">
+<div class="mb-8 px-4 py-2">
+<span class="text-[#b7c4ff] font-black text-2xl font-headline tracking-tighter">VenueSync</span>
+<p class="text-slate-500 text-[10px] uppercase tracking-widest mt-1">Command Center</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-white hover:bg-[#262a31] transition-all font-label text-sm uppercase tracking-widest rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Command Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-white hover:bg-[#262a31] transition-all font-label text-sm uppercase tracking-widest rounded-lg" href="#">
+<span class="material-symbols-outlined">map</span>
+<span>Live Heatmap</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-[#262a31] text-[#00e475] rounded-lg shadow-[0px_0px_15px_rgba(0,228,117,0.2)] font-label text-sm uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">cleaning_services</span>
+<span>Facilities</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-white hover:bg-[#262a31] transition-all font-label text-sm uppercase tracking-widest rounded-lg" href="#">
+<span class="material-symbols-outlined">security</span>
+<span>Security</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-white hover:bg-[#262a31] transition-all font-label text-sm uppercase tracking-widest rounded-lg" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-white hover:bg-[#262a31] transition-all font-label text-sm uppercase tracking-widest rounded-lg" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span>Schedule</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant/10 space-y-2">
+<button class="w-full bg-gradient-to-br from-[#b7c4ff] to-[#0052ff] text-on-primary-fixed font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 mb-6 scale-95-on-click transition-transform active:scale-95">
+<span class="material-symbols-outlined">add_alert</span>
+<span class="text-xs uppercase tracking-widest">New Alert</span>
+</button>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 hover:text-white text-xs uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined text-sm">cloud_done</span>
+<span>System Status</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 hover:text-white text-xs uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined text-sm">logout</span>
+<span>Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 min-h-screen transition-all duration-300">
+<!-- Top Navigation Bar -->
+<header class="flex justify-between items-center px-6 py-4 w-full bg-[#10141a] tonal-layering-no-borders sticky top-0 z-30">
+<div class="flex items-center gap-4">
+<h1 class="font-headline tracking-tight font-bold text-2xl text-on-surface">Facility Monitoring</h1>
+<div class="hidden lg:flex items-center bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant/10">
+<span class="material-symbols-outlined text-slate-400 text-lg mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm text-on-surface w-64" placeholder="Search facilities..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:text-white transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional male venue organizer profile portrait with a focused expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-T59sbQmRUzbm24rDNFs9Sx49a2HZHAPy6ijjTAjk_3CCWJ5DI5I-y9m1ShsdSICV-JNOhYD1iVAHD_OdyZVwpKoUBWuN3zJK6jfSZcgTikaWHcY0XZrT3H3lVwd8VU6bsu1LNvLgOvDqRZifx2gY_JB4c5gCXZNfIKy4X-sYkkSy1jOrFB7du5jdbLS1LXICSyu2AxGTjYeoL7pslZg-D5Ynjx5js7vDsZrqxixbyL4KtKkBizdcCOYDXyHTagt7_AYkzvKIkyyv"/>
+</div>
+</div>
+</header>
+<!-- Bento Grid Dashboard -->
+<div class="p-6 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-12 gap-6 pb-24 md:pb-6">
+<!-- Real-time Status Overview (Hero Section) -->
+<section class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="bg-surface-container-low p-6 rounded-3xl flex flex-col justify-between">
+<div>
+<span class="text-slate-400 text-xs uppercase tracking-widest font-label">Washroom Usage</span>
+<h2 class="text-4xl font-headline font-extrabold text-on-surface mt-2">84<span class="text-lg text-primary">%</span></h2>
+</div>
+<div class="mt-4 flex items-center text-tertiary text-xs">
+<span class="material-symbols-outlined text-sm mr-1">trending_up</span>
+<span>High Traffic Peak</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-3xl flex flex-col justify-between">
+<div>
+<span class="text-slate-400 text-xs uppercase tracking-widest font-label">Active Alerts</span>
+<h2 class="text-4xl font-headline font-extrabold text-error mt-2">03</h2>
+</div>
+<div class="mt-4 flex items-center text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-sm mr-1">warning</span>
+<span>2 Critical, 1 Low</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-3xl flex flex-col justify-between border-l-4 border-tertiary">
+<div>
+<span class="text-slate-400 text-xs uppercase tracking-widest font-label">Cleaning Score</span>
+<h2 class="text-4xl font-headline font-extrabold text-tertiary mt-2">9.2</h2>
+</div>
+<div class="mt-4 flex items-center text-tertiary text-xs">
+<span class="material-symbols-outlined text-sm mr-1">verified</span>
+<span>Exceeding Targets</span>
+</div>
+</div>
+</section>
+<!-- Cleaning Crew Status (Sidebar Bento) -->
+<aside class="lg:col-span-4 lg:row-span-3 bg-surface-container-low rounded-3xl p-6 flex flex-col gap-6">
+<div class="flex justify-between items-center">
+<h3 class="font-headline font-bold text-on-surface">Cleaning Crew</h3>
+<span class="text-[10px] bg-tertiary/10 text-tertiary px-2 py-1 rounded-full uppercase tracking-widest font-bold">12 Active</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 p-3 bg-surface-container-high rounded-2xl">
+<div class="relative">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of a female cleaning staff member smiling in uniform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABywrgf7DAFGYDTXIBDQWwRhONgo2kkhiU5mkeBX4OUTa440ou4gXvLXsFrace9m0-OIaYcB4s_PbKYYGsvGH_MejhLrKF0rTi19l25hIAmPmYoaIXTEYdQ6gqwxse1CSomaggV-ryvgnX2eP4QR1-nNIUevo63BdapltMuKLZLRxUVVYEfrNbJjmpQng5pEwmceLFU6WFfGKi-zotGF8yBG-8wOu9XNpbl3iOZ3omafV2EUUzTi-cK2lH_Hk3XVIUeKnfYHmtP38q"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-tertiary border-2 border-surface-container-high rounded-full"></span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-on-surface">Elena Rodriguez</p>
+<p class="text-[10px] text-slate-400 uppercase tracking-wider">Sector A - North Gate</p>
+</div>
+<button class="p-2 text-primary hover:bg-primary/10 rounded-xl transition-colors">
+<span class="material-symbols-outlined">chat</span>
+</button>
+</div>
+<div class="flex items-center gap-4 p-3 bg-surface-container-high rounded-2xl">
+<div class="relative">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of a male facility maintenance worker in a blue vest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcCVdAH5OYsZSQ9vm3CUafnv65Lo0h7dKm72WyGVYFyx7EIDR_1SSDZRfz3nKiZNU5xAcZTsyKu4XGbRdayAw0geZ8_sxSxiHRUd1ChOck-sW5GCh8BtY3eXKar7WDUjiBgYZuoOFgFHgE7i2qruo9gH2G6YI0j_w8RL6vtlrUgzNmrMAlIk34X34cuIHjubmkxU-p_yucqNcCNKg7sTvC4bD6ciyaP5IssF08THpcvlj_Jn7tN2rdTgTdNxa_onD3a8pO6pIgDHIx"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-tertiary border-2 border-surface-container-high rounded-full"></span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-on-surface">Marcus Chen</p>
+<p class="text-[10px] text-slate-400 uppercase tracking-wider">Sector C - Main Hall</p>
+</div>
+<button class="p-2 text-primary hover:bg-primary/10 rounded-xl transition-colors">
+<span class="material-symbols-outlined">chat</span>
+</button>
+</div>
+<div class="flex items-center gap-4 p-3 bg-surface-container-high rounded-2xl opacity-60">
+<div class="relative">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of a young man wearing a maintenance uniform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARMMo1Vfl4V1SBDmsNtmyi7DosFTVaIc2lcMZCAKFIylhqmdVHESAefuEbrD14jn2E1bhLaeORXK0zrNI80keywQbb9wdbWZK-AmGskedCVEWyRb4H--Tfy8XvvUrBj9QwjTiGhgYBc2JYxStAhdlHtBgrU2DnENVh9Uevq0uc_uKkHNeXHFPv9NNq1TAbBV0qmfigCK4iVNywIwb5ZeE0yYwBTMLBQq0frhVMKS_XVD2wrXKIreuZeDyUQkt23VZOadaa2NJ8iYfc"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-slate-500 border-2 border-surface-container-high rounded-full"></span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-on-surface">Jordan Smith</p>
+<p class="text-[10px] text-slate-400 uppercase tracking-wider">On Break</p>
+</div>
+<button class="p-2 text-slate-500 rounded-xl cursor-not-allowed">
+<span class="material-symbols-outlined">chat</span>
+</button>
+</div>
+</div>
+<button class="mt-auto w-full py-3 bg-surface-container-highest rounded-2xl text-xs font-bold uppercase tracking-widest text-on-surface hover:bg-surface-bright transition-colors">
+                    View Full Schedule
+                </button>
+</aside>
+<!-- Facility Map & Usage Heatmap -->
+<section class="lg:col-span-8 bg-surface-container-low rounded-3xl overflow-hidden flex flex-col relative h-[450px]">
+<div class="absolute top-6 left-6 z-10 flex gap-2">
+<span class="bg-surface-container-high/80 backdrop-blur-md px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-on-surface flex items-center border border-outline-variant/10">
+<span class="w-2 h-2 bg-primary rounded-full mr-2"></span> Level 01 Plan
+                    </span>
+<span class="bg-surface-container-high/80 backdrop-blur-md px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-on-surface flex items-center border border-outline-variant/10">
+<span class="w-2 h-2 bg-tertiary rounded-full mr-2"></span> Heatmap: Active
+                    </span>
+</div>
+<!-- Simulating a floor plan with tonal blocks -->
+<div class="w-full h-full bg-[#1c2026] relative overflow-hidden" data-location="Los Angeles" style="">
+<img class="w-full h-full object-cover opacity-30 mix-blend-luminosity" data-alt="Top down abstract schematic of a modern building floor plan with glowing neon teal and blue highlights for facility locations" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD52fsoTobAZOrDbjEM0RfqWag4nOIl9ujey8Nv0pQhcxb1J3AcSp_sdSYDX9bjss4aYpQvGhIOiEQUJHYWGopL7hhANydlKrR-LYT6bqDk08qZfZm81o5mzt_QBjI2bItGmUKyRtwFm4S7UolCfzTrZ7AnnpaLmAmbAdJottOZGcDZ74wsdHYFD055lVj56KZDtSKmjFdOi5DeDZLSY6OgO9jpPQaHvflpX0nDahvKt1CS6cyvIhU5JN8FXrvroROBYCSxtOqIq3uH"/>
+<!-- POIs / Hotspots -->
+<div class="absolute top-1/4 left-1/3 group cursor-pointer">
+<div class="w-8 h-8 bg-tertiary rounded-full pulse-on-active opacity-40 absolute -inset-0"></div>
+<div class="w-8 h-8 bg-tertiary-container border-2 border-tertiary rounded-full flex items-center justify-center relative shadow-lg">
+<span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: 'FILL' 1;">wc</span>
+</div>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-surface-bright p-2 rounded-xl border border-outline-variant/20 hidden group-hover:block w-32 shadow-2xl">
+<p class="text-[10px] font-bold text-white uppercase">North Restroom</p>
+<p class="text-[8px] text-slate-400 mt-1">Status: Cleaned 5m ago</p>
+</div>
+</div>
+<div class="absolute top-2/3 right-1/4 group cursor-pointer">
+<div class="w-8 h-8 bg-error rounded-full pulse-on-active opacity-40 absolute -inset-0"></div>
+<div class="w-8 h-8 bg-error-container border-2 border-error rounded-full flex items-center justify-center relative shadow-lg">
+<span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-surface-bright p-2 rounded-xl border border-outline-variant/20 hidden group-hover:block w-40 shadow-2xl">
+<p class="text-[10px] font-bold text-white uppercase">East Sector Toilet</p>
+<p class="text-[8px] text-error mt-1 font-bold">Alert: Sensor Malfunction</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Usage Patterns (Data Chart Area) -->
+<section class="lg:col-span-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Facility Maintenance Log -->
+<div class="bg-surface-container-low rounded-3xl p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline font-bold text-on-surface">Recent Activity Log</h3>
+<button class="text-primary text-xs font-bold hover:underline">Download CSV</button>
+</div>
+<div class="space-y-0">
+<div class="flex items-center justify-between py-4 border-b border-outline-variant/5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div>
+<p class="text-sm font-medium text-on-surface">Main Hall Washroom (M)</p>
+<p class="text-xs text-slate-500">Scheduled deep clean completed</p>
+</div>
+</div>
+<span class="text-xs text-slate-500">14:20 PM</span>
+</div>
+<div class="flex items-center justify-between py-4 border-b border-outline-variant/5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">sensors</span>
+</div>
+<div>
+<p class="text-sm font-medium text-on-surface">Food Court South</p>
+<p class="text-xs text-slate-500">Paper towel sensor triggered alert</p>
+</div>
+</div>
+<span class="text-xs text-slate-500">13:55 PM</span>
+</div>
+<div class="flex items-center justify-between py-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-error">
+<span class="material-symbols-outlined">report_problem</span>
+</div>
+<div>
+<p class="text-sm font-medium text-on-surface">VIP Lounge West</p>
+<p class="text-xs text-slate-500">Plumbing issue reported by staff</p>
+</div>
+</div>
+<span class="text-xs text-slate-500">13:32 PM</span>
+</div>
+</div>
+</div>
+<!-- Usage Density Graph Simulation -->
+<div class="bg-surface-container-low rounded-3xl p-6 flex flex-col">
+<h3 class="font-headline font-bold text-on-surface mb-6">Traffic Density Trends</h3>
+<div class="flex-1 flex items-end justify-between gap-2 h-48 px-2">
+<div class="w-full bg-surface-container-highest rounded-t-lg h-[40%] transition-all hover:bg-primary-container relative group">
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-on-surface text-surface text-[8px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap">09:00 - 45%</div>
+</div>
+<div class="w-full bg-surface-container-highest rounded-t-lg h-[65%] transition-all hover:bg-primary-container relative group">
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-on-surface text-surface text-[8px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap">10:00 - 68%</div>
+</div>
+<div class="w-full bg-surface-container-highest rounded-t-lg h-[95%] transition-all hover:bg-primary-container relative group">
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-on-surface text-surface text-[8px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap">11:00 - 94%</div>
+</div>
+<div class="w-full bg-primary-container rounded-t-lg h-[80%] transition-all relative group">
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-on-surface text-surface text-[8px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap">Now - 82%</div>
+</div>
+<div class="w-full bg-surface-container-highest rounded-t-lg h-[55%] transition-all hover:bg-primary-container relative group"></div>
+<div class="w-full bg-surface-container-highest rounded-t-lg h-[30%] transition-all hover:bg-primary-container relative group"></div>
+<div class="w-full bg-surface-container-highest rounded-t-lg h-[25%] transition-all hover:bg-primary-container relative group"></div>
+</div>
+<div class="flex justify-between mt-4 px-2">
+<span class="text-[10px] text-slate-500">09:00</span>
+<span class="text-[10px] text-slate-500">11:00</span>
+<span class="text-[10px] text-slate-500">13:00</span>
+<span class="text-[10px] text-slate-500">15:00</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#10141a]/60 backdrop-blur-xl rounded-t-3xl shadow-[0px_-24px_48px_rgba(0,0,0,0.4)]">
+<a class="flex flex-col items-center justify-center text-slate-400 p-2 hover:text-white transition-transform active:scale-105" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-inter text-[10px] font-medium mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 p-2 hover:text-white transition-transform active:scale-105" href="#">
+<span class="material-symbols-outlined">confirmation_number</span>
+<span class="font-inter text-[10px] font-medium mt-1">My Pass</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#b7c4ff] to-[#0052ff] text-white rounded-2xl p-3 transition-transform active:scale-105 shadow-lg shadow-primary-container/20" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-inter text-[10px] font-medium mt-1">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 p-2 hover:text-white transition-transform active:scale-105" href="#">
+<span class="material-symbols-outlined">person_2</span>
+<span class="font-inter text-[10px] font-medium mt-1">Profile</span>
+</a>
+</nav>
+<!-- Floating Action Button for Emergency (Desktop) -->
+<button class="fixed right-8 bottom-8 h-16 w-16 bg-error text-on-error rounded-full shadow-[0px_24px_48px_rgba(0,0,0,0.4)] flex items-center justify-center z-40 hover:scale-110 transition-transform hidden md:flex active:scale-95">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">emergency</span>
+</button>
+</body></html>

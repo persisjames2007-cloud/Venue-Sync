@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-secondary-container": "#a8afff",
+                "primary-fixed": "#dde1ff",
+                "surface-bright": "#353940",
+                "tertiary-fixed": "#62ff96",
+                "on-primary-fixed": "#001452",
+                "surface": "#10141a",
+                "on-secondary-fixed": "#000767",
+                "secondary-container": "#343d96",
+                "tertiary-container": "#007639",
+                "background": "#10141a",
+                "outline": "#8d90a2",
+                "secondary": "#bdc2ff",
+                "on-tertiary": "#003918",
+                "on-tertiary-fixed-variant": "#005226",
+                "error": "#ffb4ab",
+                "surface-dim": "#10141a",
+                "on-primary-container": "#dfe3ff",
+                "tertiary": "#00e475",
+                "on-primary-fixed-variant": "#0038b6",
+                "on-surface": "#dfe2eb",
+                "surface-container-lowest": "#0a0e14",
+                "surface-container-high": "#262a31",
+                "primary-container": "#0052ff",
+                "on-background": "#dfe2eb",
+                "primary": "#b7c4ff",
+                "on-secondary-fixed-variant": "#343d96",
+                "on-error": "#690005",
+                "inverse-primary": "#004ced",
+                "inverse-surface": "#dfe2eb",
+                "inverse-on-surface": "#2d3137",
+                "surface-container-highest": "#31353c",
+                "primary-fixed-dim": "#b7c4ff",
+                "surface-tint": "#b7c4ff",
+                "on-tertiary-container": "#78ff9f",
+                "secondary-fixed": "#e0e0ff",
+                "secondary-fixed-dim": "#bdc2ff",
+                "on-tertiary-fixed": "#00210b",
+                "on-surface-variant": "#c3c5d9",
+                "on-primary": "#002682",
+                "tertiary-fixed-dim": "#00e475",
+                "surface-variant": "#31353c",
+                "on-error-container": "#ffdad6",
+                "surface-container": "#1c2026",
+                "outline-variant": "#434656",
+                "on-secondary": "#1b247f",
+                "surface-container-low": "#181c22",
+                "error-container": "#93000a"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "fontFamily": {
+                "headline": ["Manrope"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary min-h-screen">
+<!-- Top Navigation -->
+<header class="bg-[#10141a]/60 backdrop-blur-xl w-full top-0 sticky flex justify-between items-center px-6 py-4 z-50 shadow-[0px_24px_48px_rgba(0,0,0,0.4)]">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#b7c4ff] font-headline">OmniMap</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 font-medium font-['Manrope'] text-sm tracking-tight hover:text-white transition-colors duration-200" href="#">Map</a>
+<a class="text-[#b7c4ff] font-bold border-b-2 border-[#b7c4ff] pb-1 font-['Manrope'] text-sm tracking-tight hover:text-white transition-colors duration-200" href="#">Dashboard</a>
+<a class="text-slate-400 font-medium font-['Manrope'] text-sm tracking-tight hover:text-white transition-colors duration-200" href="#">Alerts</a>
+<a class="text-slate-400 font-medium font-['Manrope'] text-sm tracking-tight hover:text-white transition-colors duration-200" href="#">Control Panel</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:text-white active:scale-95 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-white active:scale-95 transition-transform">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<div class="flex flex-col md:flex-row min-h-[calc(100vh-72px)]">
+<!-- Side Navigation (Web) -->
+<aside class="hidden md:flex bg-[#181c22] h-screen w-64 left-0 sticky flex-col py-8 z-40">
+<div class="px-6 mb-8">
+<h2 class="text-lg font-black text-white font-headline">Tech Summit 2024</h2>
+<p class="text-[10px] uppercase tracking-widest text-tertiary font-bold mt-1">Live Now</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-slate-500 py-3 px-6 flex items-center gap-4 font-['Inter'] font-medium text-xs uppercase tracking-widest hover:bg-[#262a31] hover:text-slate-200 transition-all" href="#">
+<span class="material-symbols-outlined">map</span>
+<span>Map</span>
+</a>
+<a class="bg-[#262a31] text-[#b7c4ff] rounded-r-full py-3 px-6 border-l-4 border-[#0052FF] flex items-center gap-4 font-['Inter'] font-medium text-xs uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="text-slate-500 py-3 px-6 flex items-center gap-4 font-['Inter'] font-medium text-xs uppercase tracking-widest hover:bg-[#262a31] hover:text-slate-200 transition-all" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span>Alerts</span>
+</a>
+<a class="text-slate-500 py-3 px-6 flex items-center gap-4 font-['Inter'] font-medium text-xs uppercase tracking-widest hover:bg-[#262a31] hover:text-slate-200 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Control Panel</span>
+</a>
+<a class="text-slate-500 py-3 px-6 flex items-center gap-4 font-['Inter'] font-medium text-xs uppercase tracking-widest hover:bg-[#262a31] hover:text-slate-200 transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span>Profile</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full bg-error-container text-on-error-container py-3 rounded-xl text-[10px] font-black uppercase tracking-tighter flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">emergency_home</span>
+                    Emergency Broadcast
+                </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 bg-surface p-6 md:p-10 space-y-10 overflow-y-auto">
+<!-- Hero Header -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="text-primary font-bold tracking-widest text-[10px] uppercase">Summit Dining &amp; Fuel</span>
+<h1 class="text-5xl font-extrabold text-white font-headline tracking-tighter mt-2">Summit Canteen</h1>
+<p class="text-on-surface-variant mt-2 max-w-lg">Curated artisanal stalls providing rapid energy for innovators. Precision tracking for all active orders.</p>
+</div>
+<!-- Filter Pills -->
+<div class="flex gap-2 overflow-x-auto hide-scrollbar pb-2">
+<button class="bg-primary text-on-primary px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap">All Cuisines</button>
+<button class="bg-surface-container-high text-on-surface-variant px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap hover:bg-surface-bright transition-colors">Italian</button>
+<button class="bg-surface-container-high text-on-surface-variant px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap hover:bg-surface-bright transition-colors">Japanese</button>
+<button class="bg-surface-container-high text-on-surface-variant px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap hover:bg-surface-bright transition-colors">Mexican</button>
+<button class="bg-surface-container-high text-on-surface-variant px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap hover:bg-surface-bright transition-colors">Vegan</button>
+</div>
+</section>
+<!-- Food Stall Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Stall Card 1 -->
+<div class="group bg-surface-container-high rounded-xl overflow-hidden hover:bg-surface-bright transition-all duration-300 transform hover:scale-[1.02]">
+<div class="relative h-48 w-full">
+<img alt="Artisanal ramen" class="w-full h-full object-cover" data-alt="close-up of a steaming bowl of tonkotsu ramen with soft boiled egg and bamboo shoots on a dark wood table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG0pVMOka6mHuEQUg4_58I_s0KXXmzR9ECvRIKNNYCGTB37NsYQdsIf7w9jzRwhNIW2GKDk2ucRzvXYOlTszQ2qhFEiKjY5lpxBOh5jSrK3kZHdjsDDL-L7jBSqKeJTOjwtdZ8I45vY2UqtFMT6VC02UjPXsL33l7cemN-_xYHZNvR0v_WBIpuYyBal2fl-H6zwneljIvmRNZBtlaJEpF0bGuGYZmaMiBoPM2N_XNsNjE_IkiBRb873lAYGU7pJxEzINnW5Mxn3KOF"/>
+<div class="absolute top-4 right-4 bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 bg-tertiary rounded-full animate-pulse"></span>
+                            LIVE
+                        </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-xl font-bold text-white font-headline">Kyoto Precision</h3>
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold ml-1">4.9</span>
+</div>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant text-xs mb-6">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 12 mins</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">payments</span> $$</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">restaurant</span> Japanese</span>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-bold text-xs flex items-center justify-center gap-2 group-hover:bg-primary-fixed group-hover:text-on-primary-fixed transition-colors">
+                            View Menu
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Stall Card 2 -->
+<div class="group bg-surface-container-high rounded-xl overflow-hidden hover:bg-surface-bright transition-all duration-300 transform hover:scale-[1.02]">
+<div class="relative h-48 w-full">
+<img alt="Gourmet pizza" class="w-full h-full object-cover" data-alt="rustic sourdough pizza with bubbling mozzarella and fresh basil leaves on a stone board in a dark kitchen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4PdLc8-R-l_LvOTYCzT12ykeutb8PPh5UfGvZHr6n1B2FLQb-4w5lobgBRKl3EakUayc7H_mG8u-jWtR5n3-yL4wbjgnWhDB5LXZ5aUygaAXR8eXs0T9_SijmKBaaZIy14izH8dWs6o9OtSUlE8Fy29pu43kFoIk1IEoMbi5PMxXZV-7KZb6aaNWDfmfA0jjbnHNzyWSuMWC4YxSQGbDz-erlYBrFxtxZNBcgut8u4jY3nbEt-VjGxGAGvTGZNuEAasTrOn-9Cbnz"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-xl font-bold text-white font-headline">Napoli Network</h3>
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold ml-1">4.7</span>
+</div>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant text-xs mb-6">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 15 mins</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">payments</span> $$</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">restaurant</span> Italian</span>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-bold text-xs flex items-center justify-center gap-2 transition-colors">
+                            View Menu
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Stall Card 3 -->
+<div class="group bg-surface-container-high rounded-xl overflow-hidden hover:bg-surface-bright transition-all duration-300 transform hover:scale-[1.02]">
+<div class="relative h-48 w-full">
+<img alt="Vegan bowl" class="w-full h-full object-cover" data-alt="vibrant vegan power bowl with roasted chickpeas, avocado slices, and kale in a ceramic bowl with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxe4xJKBE1JKQl3_eWYeQPKEhPAW-gwLPuDhVmO_QAV-PWlx35EUZ0z3sCykwi1kQ5MHKI-2OnKBt62XXh08OHKiU2Jr3mxpZBOl-29rwvjxy8MMBrweQfcH4kgLhfdGyQv2GavtN6-tBPUlQQ_RHZVn0F-wv0lYa41gITApuIFfPCp5h4P0T7vf-KjrSJA41ErZgMQMzlo9TjQBYKg-hub9cw9QIh38AJi1AcFsVwzkmpfJ2lBZxFDTrBYAuzxnWUWAZD1SQlIEdL"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-xl font-bold text-white font-headline">Terra Labs</h3>
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold ml-1">4.8</span>
+</div>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant text-xs mb-6">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 8 mins</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">payments</span> $</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">restaurant</span> Vegan</span>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-bold text-xs flex items-center justify-center gap-2 transition-colors">
+                            View Menu
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Detailed View Mockup Section -->
+<section class="bg-surface-container-low rounded-2xl p-1 overflow-hidden">
+<div class="grid md:grid-cols-5 gap-0">
+<div class="md:col-span-2 relative h-64 md:h-full">
+<img alt="Burger stall" class="w-full h-full object-cover" data-alt="dramatic close-up of a stacked wagyu beef burger with melting cheese and caramelized onions under spotlighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNm0_hMNQYoqpnxFnNIXqhatqQPQVZlKdtOCRNBW2ZQa7EWLjaVADsdbOKS7oSXTtpwDcYUHhInDJONglCt471ZRpkGbbWPMXAlSsKn-EcO22VIdHENSbkydME_0GvncOALqDz6IVgPZFwneWYR58GVLO8G9OxFYG1IVrYXl9mR_32eejG-uTVJLYXEEBXf00hbW8eybibsOgcZLaEhbAEWJNZXYi0vNl79D3LzG1HEIJ4J1wma5be1AhX9yty00iR-vZ1e44HZ9Y2"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent md:bg-gradient-to-r"></div>
+</div>
+<div class="md:col-span-3 p-8 lg:p-12 space-y-8">
+<div>
+<div class="flex items-center gap-2 text-tertiary mb-2">
+<span class="material-symbols-outlined text-sm">verified</span>
+<span class="text-[10px] font-bold tracking-widest uppercase">Editor's Choice</span>
+</div>
+<h2 class="text-4xl font-extrabold text-white font-headline">Binary Burger</h2>
+<p class="text-on-surface-variant mt-2">Precision-engineered burgers for maximum cognitive performance. Open flame grilling with algorithmic consistency.</p>
+</div>
+<div class="space-y-4">
+<h4 class="text-xs font-bold uppercase tracking-widest text-slate-500">Popular items</h4>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-4 bg-surface-container-high rounded-xl hover:bg-surface-bright transition-colors cursor-pointer border-l-2 border-transparent hover:border-primary">
+<div>
+<p class="text-sm font-bold text-white">The Stack Overflow</p>
+<p class="text-[10px] text-slate-400">Double Wagyu, Truffle Aioli, Brioche</p>
+</div>
+<span class="text-primary font-bold text-sm">$18.00</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-high rounded-xl hover:bg-surface-bright transition-colors cursor-pointer border-l-2 border-transparent hover:border-primary">
+<div>
+<p class="text-sm font-bold text-white">Quantum Fries</p>
+<p class="text-[10px] text-slate-400">Hand-cut, Rosemary Sea Salt</p>
+</div>
+<span class="text-primary font-bold text-sm">$6.50</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex-1 bg-gradient-to-br from-primary to-primary-container text-white py-4 rounded-xl font-bold text-sm shadow-[0px_8px_24px_rgba(0,82,255,0.3)] active:scale-95 transition-all">
+                                Place Order
+                            </button>
+<button class="p-4 bg-surface-container-high text-on-surface rounded-xl hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Sidebar: Active Orders -->
+<aside class="w-full md:w-80 bg-surface-container-low p-6 flex flex-col gap-6 z-30">
+<div class="flex items-center justify-between">
+<h3 class="text-sm font-black uppercase tracking-widest text-white font-headline">Live Track</h3>
+<span class="bg-primary-container text-on-primary-container px-2 py-0.5 rounded text-[10px] font-bold">2 ACTIVE</span>
+</div>
+<div class="space-y-4">
+<!-- Active Order 1 -->
+<div class="bg-surface-container-high rounded-2xl p-5 border-l-4 border-tertiary">
+<div class="flex justify-between items-start mb-3">
+<div>
+<p class="text-[10px] text-slate-500 font-bold uppercase">Order #8821</p>
+<h4 class="text-sm font-bold text-white">Kyoto Precision</h4>
+</div>
+<span class="text-tertiary font-black text-[10px] bg-tertiary-container/30 px-2 py-1 rounded">READY</span>
+</div>
+<div class="space-y-2 mb-4">
+<div class="flex justify-between text-[11px]">
+<span class="text-slate-400">Tonkotsu Special</span>
+<span class="text-white">x1</span>
+</div>
+</div>
+<div class="bg-tertiary/10 rounded-lg p-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-lg">check_circle</span>
+<p class="text-[11px] text-tertiary font-bold">Pick up at Stall 12</p>
+</div>
+</div>
+<!-- Active Order 2 -->
+<div class="bg-surface-container-high rounded-2xl p-5 border-l-4 border-primary">
+<div class="flex justify-between items-start mb-3">
+<div>
+<p class="text-[10px] text-slate-500 font-bold uppercase">Order #8825</p>
+<h4 class="text-sm font-bold text-white">Binary Burger</h4>
+</div>
+<span class="text-primary font-black text-[10px] bg-primary-container/30 px-2 py-1 rounded">PREPARING</span>
+</div>
+<div class="space-y-2 mb-4">
+<div class="flex justify-between text-[11px]">
+<span class="text-slate-400">Stack Overflow</span>
+<span class="text-white">x1</span>
+</div>
+</div>
+<div class="relative h-1.5 w-full bg-surface rounded-full overflow-hidden">
+<div class="absolute inset-y-0 left-0 bg-primary w-[65%] rounded-full"></div>
+</div>
+<p class="text-[10px] text-slate-500 mt-2 flex justify-between">
+<span>Estimated Ready</span>
+<span class="text-on-surface">~4 mins</span>
+</p>
+</div>
+</div>
+<!-- Promotion Card -->
+<div class="mt-auto bg-gradient-to-br from-[#262a31] to-[#181c22] p-5 rounded-2xl relative overflow-hidden group">
+<div class="relative z-10">
+<p class="text-xs font-bold text-primary mb-1">Speaker's Lounge</p>
+<p class="text-xs text-on-surface-variant leading-relaxed">Presenters get 20% off all orders today.</p>
+</div>
+<span class="material-symbols-outlined absolute -bottom-2 -right-2 text-6xl text-white/5 group-hover:scale-110 transition-transform">restaurant</span>
+</div>
+</aside>
+</div>
+<!-- Mobile Navigation Bar -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-[#10141a]/80 backdrop-blur-2xl px-6 py-4 flex justify-between items-center z-50 border-t border-white/5">
+<button class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined">map</span>
+<span class="text-[10px] font-bold">MAP</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#b7c4ff]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-bold">DINING</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-[10px] font-bold">ALERTS</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">PROFILE</span>
+</button>
+</nav>
+</body></html>

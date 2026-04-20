@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Emergency Navigation | VenueSync</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#a8afff",
+                        "primary-fixed": "#dde1ff",
+                        "surface-bright": "#353940",
+                        "tertiary-fixed": "#62ff96",
+                        "on-primary-fixed": "#001452",
+                        "surface": "#10141a",
+                        "on-secondary-fixed": "#000767",
+                        "secondary-container": "#343d96",
+                        "tertiary-container": "#007639",
+                        "background": "#10141a",
+                        "outline": "#8d90a2",
+                        "secondary": "#bdc2ff",
+                        "on-tertiary": "#003918",
+                        "on-tertiary-fixed-variant": "#005226",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#10141a",
+                        "on-primary-container": "#dfe3ff",
+                        "tertiary": "#00e475",
+                        "on-primary-fixed-variant": "#0038b6",
+                        "on-surface": "#dfe2eb",
+                        "surface-container-lowest": "#0a0e14",
+                        "surface-container-high": "#262a31",
+                        "primary-container": "#0052ff",
+                        "on-background": "#dfe2eb",
+                        "primary": "#b7c4ff",
+                        "on-secondary-fixed-variant": "#343d96",
+                        "on-error": "#690005",
+                        "inverse-primary": "#004ced",
+                        "inverse-surface": "#dfe2eb",
+                        "inverse-on-surface": "#2d3137",
+                        "surface-container-highest": "#31353c",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "surface-tint": "#b7c4ff",
+                        "on-tertiary-container": "#78ff9f",
+                        "secondary-fixed": "#e0e0ff",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "on-tertiary-fixed": "#00210b",
+                        "on-surface-variant": "#c3c5d9",
+                        "on-primary": "#002682",
+                        "tertiary-fixed-dim": "#00e475",
+                        "surface-variant": "#31353c",
+                        "on-error-container": "#ffdad6",
+                        "surface-container": "#1c2026",
+                        "outline-variant": "#434656",
+                        "on-secondary": "#1b247f",
+                        "surface-container-low": "#181c22",
+                        "error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pulse-error {
+            animation: pulse-red 2s infinite;
+        }
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(255, 180, 171, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 180, 171, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 180, 171, 0); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar Suppression: Page is task-focused (Emergency) -->
+<main class="min-h-screen flex flex-col md:flex-row h-screen overflow-hidden">
+<!-- Urgent Control Panel (Left/Top) -->
+<div class="w-full md:w-[400px] flex flex-col bg-surface-container-low z-20 overflow-y-auto">
+<!-- Branding/Emergency Status -->
+<div class="p-6 bg-error-container flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-headline font-extrabold text-2xl tracking-tighter text-on-error-container">EMERGENCY MODE</span>
+<span class="material-symbols-outlined text-on-error-container animate-pulse" style="font-variation-settings: 'FILL' 1;">emergency</span>
+</div>
+<p class="text-on-error-container font-medium text-sm opacity-90">Protocol active for Tech Summit 2024</p>
+</div>
+<!-- Primary Actions Area -->
+<div class="flex-1 p-6 space-y-4">
+<!-- Heavy CTA: Assistance -->
+<button class="w-full bg-error py-6 px-4 rounded-xl flex items-center justify-center gap-4 group active:scale-95 transition-all pulse-error">
+<span class="material-symbols-outlined text-on-error text-3xl" style="font-variation-settings: 'FILL' 1;">emergency_share</span>
+<div class="text-left">
+<span class="block font-headline font-extrabold text-lg text-on-error leading-tight">I need assistance</span>
+<span class="block text-on-error font-medium text-xs opacity-80">Pings security with your location</span>
+</div>
+</button>
+<div class="h-px bg-outline-variant opacity-20 my-6"></div>
+<!-- Navigation Quick-Links (High Visibility) -->
+<div class="grid grid-cols-1 gap-4">
+<button class="w-full bg-surface-container-highest p-5 rounded-xl flex items-center gap-4 hover:bg-surface-bright transition-colors border-l-4 border-error">
+<span class="material-symbols-outlined text-error text-2xl" style="font-variation-settings: 'FILL' 1;">exit_to_app</span>
+<div class="text-left">
+<span class="block font-headline font-bold text-on-surface">Emergency Exit</span>
+<span class="block text-on-surface-variant text-xs font-medium uppercase tracking-wider">Closest: Gate 4 (120m)</span>
+</div>
+</button>
+<button class="w-full bg-surface-container-highest p-5 rounded-xl flex items-center gap-4 hover:bg-surface-bright transition-colors border-l-4 border-tertiary">
+<span class="material-symbols-outlined text-tertiary text-2xl" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+<div class="text-left">
+<span class="block font-headline font-bold text-on-surface">First Aid</span>
+<span class="block text-on-surface-variant text-xs font-medium uppercase tracking-wider">Level 2 - South Wing</span>
+</div>
+</button>
+<button class="w-full bg-surface-container-highest p-5 rounded-xl flex items-center gap-4 hover:bg-surface-bright transition-colors border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">security</span>
+<div class="text-left">
+<span class="block font-headline font-bold text-on-surface">Security Hub</span>
+<span class="block text-on-surface-variant text-xs font-medium uppercase tracking-wider">Central Atrium</span>
+</div>
+</button>
+</div>
+<div class="mt-8 p-4 bg-surface-container rounded-xl border border-outline-variant/30">
+<h3 class="text-primary text-xs font-black uppercase tracking-[0.2em] mb-3">Live Instruction</h3>
+<p class="text-on-surface text-sm leading-relaxed">
+                        Please follow the <span class="text-tertiary font-bold">green light path</span> on the floor. Avoid elevators. Use North stairwells only.
+                    </p>
+</div>
+</div>
+<!-- Footer Contact -->
+<div class="p-6 bg-surface-container-lowest flex items-center justify-between">
+<div>
+<p class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest mb-1">Direct Help Line</p>
+<p class="text-on-surface font-headline font-bold">+1 (800) 555-SAFE</p>
+</div>
+<button class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined">call</span>
+</button>
+</div>
+</div>
+<!-- Fullscreen Map Canvas (Right/Bottom) -->
+<div class="flex-1 relative bg-surface-container-lowest">
+<!-- Map Simulation Background -->
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full grayscale-[0.8] brightness-[0.4] contrast-[1.2] opacity-60" data-alt="high-contrast architectural floor plan map in dark mode with glowing blue pathways and high-visibility red markers for exits" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDa8VUqEKmCpRFWGkPbkuDQHMGkZlNgAbc4dpnyiF1hnF39CwWyHpnO94T9JoTNqm0vGQQp_8NoR6igWDkYMnq8T5LXnVkZITbEYL4cJGC0pXKUgpQzqEyDkUIHagbpnIwpeq6YFGisPJzIrTrfU-Bajq7H5ECJDpJD2gBE1bnn1NG6fkCN9ZEFTUL1MefShyoPYxEyBWb758A-6AlSA-QnVKq_n0GoLNWjcpAVQqKHrvEWkpcZ2tWzz8qXgZaD6Jk9XtBvDxxFNDDj'); background-size: cover; background-position: center;">
+</div>
+</div>
+<!-- Custom Map UI Overlay -->
+<div class="absolute inset-0 pointer-events-none p-8 flex flex-col justify-between">
+<!-- Floating Map Header -->
+<div class="flex justify-between items-start pointer-events-auto">
+<div class="bg-surface-container-highest/80 backdrop-blur-md p-4 rounded-xl flex items-center gap-4 shadow-2xl">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary">my_location</span>
+</div>
+<div>
+<p class="text-on-surface text-xs font-bold uppercase tracking-tighter opacity-70">Current Location</p>
+<p class="text-on-surface font-headline font-bold text-base">Hall B - Section 12</p>
+</div>
+</div>
+<div class="bg-surface-container-highest/80 backdrop-blur-md p-2 rounded-xl flex flex-col gap-2 shadow-2xl">
+<button class="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined">remove</span>
+</button>
+</div>
+</div>
+<!-- Safe Route Highlight Overlay (SVG Mock) -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<svg class="w-full h-full opacity-60" fill="none" viewbox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<path d="M200 800 L400 600 L400 400 L700 300" stroke="#00e475" stroke-dasharray="24 16" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
+<circle cx="200" cy="800" fill="#00e475" r="10"></circle>
+<path d="M700 300 L730 270 M730 330 L700 300" stroke="#00e475" stroke-linecap="round" stroke-width="12"></path>
+</svg>
+</div>
+<!-- Floating Route Instruction -->
+<div class="w-full max-w-md mx-auto pointer-events-auto">
+<div class="bg-surface-container-high border border-outline-variant/20 rounded-2xl p-6 shadow-[0px_24px_48px_rgba(0,0,0,0.6)] flex items-center gap-6">
+<div class="relative">
+<div class="w-16 h-16 rounded-2xl bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-4xl">turn_slight_right</span>
+</div>
+<div class="absolute -top-1 -right-1 w-4 h-4 bg-tertiary rounded-full pulse-error"></div>
+</div>
+<div class="flex-1">
+<p class="text-tertiary font-headline font-extrabold text-xl leading-tight">Safest Route Found</p>
+<p class="text-on-surface-variant text-sm mt-1">2 mins to Exit 4 • Avoiding crowded zones</p>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-on-surface font-headline font-black text-2xl tracking-tighter">120<span class="text-xs ml-1 opacity-50">m</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- POI Markers on Map (Simulated) -->
+<div class="absolute top-[30%] left-[60%] pointer-events-auto">
+<div class="group cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-error border-4 border-white shadow-lg flex items-center justify-center animate-bounce">
+<span class="material-symbols-outlined text-white text-[16px]" style="font-variation-settings: 'FILL' 1;">door_front</span>
+</div>
+<div class="absolute top-10 left-1/2 -translate-x-1/2 bg-surface-container-high px-2 py-1 rounded text-[10px] font-bold text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">EXIT GATE 4</div>
+</div>
+</div>
+<div class="absolute top-[45%] left-[35%] pointer-events-auto">
+<div class="group cursor-pointer">
+<div class="w-6 h-6 rounded-full bg-primary border-2 border-white/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[12px]" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Suppression for Focus Mode -->
+<!-- The user is in an Emergency focused journey, suppressing BottomNavBar -->
+</body></html>

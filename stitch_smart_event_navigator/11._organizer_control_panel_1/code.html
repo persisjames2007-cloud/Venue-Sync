@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#a8afff",
+                        "primary-fixed": "#dde1ff",
+                        "surface-bright": "#353940",
+                        "tertiary-fixed": "#62ff96",
+                        "on-primary-fixed": "#001452",
+                        "surface": "#10141a",
+                        "on-secondary-fixed": "#000767",
+                        "secondary-container": "#343d96",
+                        "tertiary-container": "#007639",
+                        "background": "#10141a",
+                        "outline": "#8d90a2",
+                        "secondary": "#bdc2ff",
+                        "on-tertiary": "#003918",
+                        "on-tertiary-fixed-variant": "#005226",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#10141a",
+                        "on-primary-container": "#dfe3ff",
+                        "tertiary": "#00e475",
+                        "on-primary-fixed-variant": "#0038b6",
+                        "on-surface": "#dfe2eb",
+                        "surface-container-lowest": "#0a0e14",
+                        "surface-container-high": "#262a31",
+                        "primary-container": "#0052ff",
+                        "on-background": "#dfe2eb",
+                        "primary": "#b7c4ff",
+                        "on-secondary-fixed-variant": "#343d96",
+                        "on-error": "#690005",
+                        "inverse-primary": "#004ced",
+                        "inverse-surface": "#dfe2eb",
+                        "inverse-on-surface": "#2d3137",
+                        "surface-container-highest": "#31353c",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "surface-tint": "#b7c4ff",
+                        "on-tertiary-container": "#78ff9f",
+                        "secondary-fixed": "#e0e0ff",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "on-tertiary-fixed": "#00210b",
+                        "on-surface-variant": "#c3c5d9",
+                        "on-primary": "#002682",
+                        "tertiary-fixed-dim": "#00e475",
+                        "surface-variant": "#31353c",
+                        "on-error-container": "#ffdad6",
+                        "surface-container": "#1c2026",
+                        "outline-variant": "#434656",
+                        "on-secondary": "#1b247f",
+                        "surface-container-low": "#181c22",
+                        "error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-layering-no-borders {
+            border: none !important;
+        }
+        .glass-panel {
+            background: rgba(49, 53, 60, 0.4);
+            backdrop-filter: blur(24px);
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        .pulse-indicator::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: inherit;
+            animation: pulse-ring 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container">
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 left-0 sticky bg-[#181c22] tonal-layering-no-borders flex flex-col h-full py-8 shrink-0">
+<div class="px-6 mb-10">
+<div class="text-lg font-black text-white font-headline tracking-tight mb-1">Tech Summit 2024</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary pulse-indicator relative"></span>
+<span class="font-['Inter'] font-medium text-[10px] uppercase tracking-widest text-slate-400">Live Now</span>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-slate-500 py-3 px-6 flex items-center gap-4 hover:bg-[#262a31] hover:text-slate-200 transition-all group" href="#">
+<span class="material-symbols-outlined text-xl">map</span>
+<span class="font-['Inter'] font-medium text-xs uppercase tracking-widest">Map</span>
+</a>
+<a class="text-slate-500 py-3 px-6 flex items-center gap-4 hover:bg-[#262a31] hover:text-slate-200 transition-all group" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="font-['Inter'] font-medium text-xs uppercase tracking-widest">Dashboard</span>
+</a>
+<a class="text-slate-500 py-3 px-6 flex items-center gap-4 hover:bg-[#262a31] hover:text-slate-200 transition-all group" href="#">
+<span class="material-symbols-outlined text-xl">notifications</span>
+<span class="font-['Inter'] font-medium text-xs uppercase tracking-widest">Alerts</span>
+</a>
+<a class="bg-[#262a31] text-[#b7c4ff] rounded-r-full py-3 px-6 border-l-4 border-[#0052FF] flex items-center gap-4 group transition-all scale-102 shadow-lg" href="#">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-['Inter'] font-medium text-xs uppercase tracking-widest">Control Panel</span>
+</a>
+<a class="text-slate-500 py-3 px-6 flex items-center gap-4 hover:bg-[#262a31] hover:text-slate-200 transition-all group" href="#">
+<span class="material-symbols-outlined text-xl">person</span>
+<span class="font-['Inter'] font-medium text-xs uppercase tracking-widest">Profile</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full py-3 px-4 bg-error-container text-error rounded-xl font-headline text-xs font-bold uppercase tracking-tighter hover:bg-on-error transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">emergency_share</span>
+                    Emergency Broadcast
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 bg-background overflow-y-auto">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky flex justify-between items-center px-6 py-4 w-full z-50 bg-[#10141a]/60 backdrop-blur-xl">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#b7c4ff] font-headline">OmniMap</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 font-medium font-['Manrope'] text-sm tracking-tight hover:text-white transition-colors duration-200 active:scale-95" href="#">Map</a>
+<a class="text-slate-400 font-medium font-['Manrope'] text-sm tracking-tight hover:text-white transition-colors duration-200 active:scale-95" href="#">Dashboard</a>
+<a class="text-slate-400 font-medium font-['Manrope'] text-sm tracking-tight hover:text-white transition-colors duration-200 active:scale-95" href="#">Alerts</a>
+<a class="text-[#b7c4ff] font-bold border-b-2 border-[#b7c4ff] pb-1 font-['Manrope'] text-sm tracking-tight" href="#">Control Panel</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-surface-container-high px-3 py-1.5 rounded-full border border-outline-variant/10">
+<span class="material-symbols-outlined text-tertiary text-sm">sensors</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">System Optimal</span>
+</div>
+<button class="material-symbols-outlined text-slate-400 hover:text-white transition-colors">notifications</button>
+<img alt="User Profile" class="w-8 h-8 rounded-full border-2 border-primary" data-alt="Close-up portrait of a professional man in a tech environment, modern cinematic lighting, soft background blur" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOxbgNHDJBDxmjYuSOUgf1KpJMLHE7iQoR9a6kWZ6QNX7E2lFm86-nZrQs1B7eoda_aQmygO_dcsq-73PsqbYd5ckDAX-n0orXFCtesiPR1l1duM8NT4--0DcytJh78u8a5uAnF3mVpsFGriuVQ3QQTfWxuU3dAeRcHIYc6u7yybfz4kdXq3qcA11l1GU9OmrDPI7YoHMvLuNQcAqaBrkb2nh4euQOxapDCIRjyPVmkfMq_K-sswYYyQPFd4VbIdS_R4qqDa1ZDaex"/>
+</div>
+</header>
+<div class="p-8 space-y-8">
+<!-- Hero Section: Title & Quick Stats -->
+<section class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+<div class="lg:col-span-2">
+<h1 class="text-5xl font-extrabold font-headline tracking-tighter text-on-surface mb-2">Command Center</h1>
+<p class="text-on-surface-variant font-label text-sm max-w-lg">Live operations overview for South Hall and Central Plaza. High density detected in Sector 7.</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl flex flex-col justify-between">
+<span class="text-[10px] uppercase font-bold tracking-[0.2em] text-primary">Active Attendees</span>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-3xl font-black font-headline">14,208</span>
+<span class="text-tertiary text-xs flex items-center">+4.2% <span class="material-symbols-outlined text-xs">trending_up</span></span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl flex flex-col justify-between">
+<span class="text-[10px] uppercase font-bold tracking-[0.2em] text-primary">Gate Throughput</span>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-3xl font-black font-headline">840</span>
+<span class="text-on-surface-variant text-[10px]">pax / min</span>
+</div>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Real-time Crowd Density Map -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-high rounded-xl overflow-hidden relative min-h-[500px] shadow-[0px_24px_48px_rgba(0,0,0,0.4)]">
+<div class="absolute inset-0 grayscale opacity-40 mix-blend-luminosity bg-[url('https://images.unsplash.com/photo-1526725359915-d289bcb4c7a1?q=80&amp;w=1200&amp;auto=format&amp;fit=crop')]" data-alt="Blueprint style dark architectural floor plan with subtle neon grid overlays and glowing pathways" data-location="San Francisco" style=""></div>
+<!-- Dynamic Heatmap Overlay Simulation -->
+<div class="absolute top-1/4 left-1/3 w-32 h-32 bg-error/20 blur-3xl rounded-full"></div>
+<div class="absolute bottom-1/4 right-1/4 w-48 h-48 bg-primary/20 blur-3xl rounded-full"></div>
+<!-- Map Controls -->
+<div class="absolute top-4 left-4 flex flex-col gap-2">
+<button class="p-2 glass-panel rounded-lg text-white hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined">layers</span></button>
+<button class="p-2 glass-panel rounded-lg text-white hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined">zoom_in</span></button>
+<button class="p-2 glass-panel rounded-lg text-white hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined">zoom_out</span></button>
+</div>
+<!-- Map Legend Overlay -->
+<div class="absolute bottom-6 right-6 glass-panel p-4 rounded-xl border border-outline-variant/10 w-64">
+<h4 class="text-[10px] uppercase font-bold tracking-widest text-primary mb-3">Live Density Analysis</h4>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<span class="text-xs font-medium text-on-surface">Sector 7 (Main Stage)</span>
+</div>
+<span class="text-[10px] bg-error-container text-error px-2 py-0.5 rounded-full font-bold">CRITICAL</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-tertiary"></div>
+<span class="text-xs font-medium text-on-surface">Food Court B</span>
+</div>
+<span class="text-[10px] bg-tertiary-container text-on-tertiary-container px-2 py-0.5 rounded-full font-bold">NORMAL</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-xs font-medium text-on-surface">Entry Gate 3</span>
+</div>
+<span class="text-[10px] bg-primary-container text-on-primary-container px-2 py-0.5 rounded-full font-bold">STEADY</span>
+</div>
+</div>
+</div>
+<div class="absolute top-4 right-4 bg-surface-container-highest px-4 py-2 rounded-full border border-primary/20 flex items-center gap-3">
+<span class="text-xs font-bold text-on-surface">LIVE FEED: CAM_042</span>
+<div class="w-2 h-2 rounded-full bg-error animate-pulse"></div>
+</div>
+</div>
+<!-- Command Panel -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface-container-high p-6 rounded-xl flex-1 border-t-2 border-primary/30">
+<h3 class="text-sm font-black font-headline uppercase tracking-widest text-primary mb-6">Operations Control</h3>
+<div class="space-y-4">
+<button class="w-full flex items-center justify-between p-4 bg-surface-container-lowest hover:bg-surface-bright transition-all rounded-xl group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">broadcast_on_home</span>
+<span class="text-sm font-semibold">Send Emergency Broadcast</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 bg-surface-container-lowest hover:bg-surface-bright transition-all rounded-xl group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary group-hover:scale-110 transition-transform">door_open</span>
+<span class="text-sm font-semibold">Update Gate 3 Status</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold text-tertiary">OPEN</span>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</div>
+</button>
+<button class="w-full flex items-center justify-between p-4 bg-surface-container-lowest hover:bg-surface-bright transition-all rounded-xl group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-secondary-container group-hover:scale-110 transition-transform">pause_circle</span>
+<span class="text-sm font-semibold">Pause Food Orders</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</button>
+<div class="pt-6 mt-6 border-t border-outline-variant/10">
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-[10px] uppercase font-bold tracking-widest text-slate-400">System Logs</h4>
+<button class="text-[10px] font-bold text-primary hover:underline">VIEW ALL</button>
+</div>
+<div class="space-y-3">
+<div class="flex gap-3 items-start">
+<div class="w-1.5 h-1.5 rounded-full bg-tertiary mt-1.5"></div>
+<div class="text-[11px] leading-relaxed">
+<span class="text-on-surface-variant font-bold">14:22</span> - Gate 4 successfully recalibrated.
+                                            </div>
+</div>
+<div class="flex gap-3 items-start">
+<div class="w-1.5 h-1.5 rounded-full bg-error mt-1.5"></div>
+<div class="text-[11px] leading-relaxed">
+<span class="text-on-surface-variant font-bold">14:18</span> - Heatmap alert: Sector 7 capacity &gt; 90%.
+                                            </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Flow Analytics -->
+<div class="col-span-12 lg:col-span-6 bg-surface-container-low p-6 rounded-xl">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-sm font-black font-headline uppercase tracking-widest text-primary">Gate Flow Trends</h3>
+<p class="text-[10px] text-on-surface-variant">Real-time pax movement per minute</p>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded">LIVE</span>
+<span class="px-2 py-1 bg-surface-container-highest text-[10px] font-bold rounded">HISTORY</span>
+</div>
+</div>
+<div class="h-48 w-full flex items-end gap-1.5 px-2">
+<!-- Simulated Chart Bars -->
+<div class="flex-1 bg-secondary-container/40 rounded-t-sm h-[40%]"></div>
+<div class="flex-1 bg-secondary-container/40 rounded-t-sm h-[55%]"></div>
+<div class="flex-1 bg-secondary-container/40 rounded-t-sm h-[45%]"></div>
+<div class="flex-1 bg-secondary-container/40 rounded-t-sm h-[70%]"></div>
+<div class="flex-1 bg-primary rounded-t-sm h-[85%] shadow-[0_0_15px_rgba(183,196,255,0.3)]"></div>
+<div class="flex-1 bg-primary rounded-t-sm h-[95%] shadow-[0_0_15px_rgba(183,196,255,0.3)]"></div>
+<div class="flex-1 bg-primary rounded-t-sm h-[75%] shadow-[0_0_15px_rgba(183,196,255,0.3)]"></div>
+<div class="flex-1 bg-secondary-container/40 rounded-t-sm h-[60%]"></div>
+<div class="flex-1 bg-secondary-container/40 rounded-t-sm h-[50%]"></div>
+<div class="flex-1 bg-secondary-container/40 rounded-t-sm h-[40%]"></div>
+<div class="flex-1 bg-secondary-container/40 rounded-t-sm h-[65%]"></div>
+<div class="flex-1 bg-secondary-container/40 rounded-t-sm h-[70%]"></div>
+</div>
+<div class="flex justify-between mt-4 px-2">
+<span class="text-[9px] font-bold text-on-surface-variant">14:00</span>
+<span class="text-[9px] font-bold text-on-surface-variant">14:15</span>
+<span class="text-[9px] font-bold text-on-surface-variant">14:30</span>
+</div>
+</div>
+<!-- Complaints & Feedback -->
+<div class="col-span-12 lg:col-span-6 bg-surface-container-low p-6 rounded-xl overflow-hidden">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-sm font-black font-headline uppercase tracking-widest text-primary">Pulse Feedback</h3>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary text-xs" style="font-variation-settings: 'FILL' 1;">sentiment_satisfied</span>
+<span class="text-[10px] font-bold">82%</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-error text-xs" style="font-variation-settings: 'FILL' 1;">sentiment_dissatisfied</span>
+<span class="text-[10px] font-bold">18%</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-high/50 p-4 rounded-xl border-l-4 border-error">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Sector 4 • 2m ago</span>
+<button class="material-symbols-outlined text-on-surface-variant text-sm hover:text-white">flag</button>
+</div>
+<p class="text-xs text-on-surface leading-relaxed">"Long queue for restrooms at West Wing. Only one staff visible."</p>
+</div>
+<div class="bg-surface-container-high/50 p-4 rounded-xl border-l-4 border-primary">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">General • 5m ago</span>
+<button class="material-symbols-outlined text-on-surface-variant text-sm hover:text-white">flag</button>
+</div>
+<p class="text-xs text-on-surface leading-relaxed">"Keynote session overflow. Can't find additional seating info."</p>
+</div>
+<div class="bg-surface-container-high/50 p-4 rounded-xl border-l-4 border-tertiary">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Food Hall • 12m ago</span>
+<button class="material-symbols-outlined text-on-surface-variant text-sm hover:text-white">flag</button>
+</div>
+<p class="text-xs text-on-surface leading-relaxed">"Vegan options at Stall 4 are excellent. Quick service!"</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Dashboard Footer Meta Info -->
+<footer class="mt-auto p-6 bg-surface-container-lowest flex items-center justify-between border-t border-outline-variant/5">
+<div class="flex items-center gap-4 text-[10px] font-medium text-on-surface-variant">
+<span>VENUESYNC V2.4.1</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>SERVER: US-WEST-2</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>LATENCY: 14MS</span>
+</div>
+<div class="flex items-center gap-2 text-[10px] text-slate-500">
+                    © 2024 TECH SUMMIT INFRASTRUCTURE
+                </div>
+</footer>
+</main>
+</div>
+</body></html>

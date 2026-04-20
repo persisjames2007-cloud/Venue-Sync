@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #10141a;
+        }
+        .headline-font {
+            font-family: 'Manrope', sans-serif;
+        }
+        /* Custom scrollbar for a cleaner tech look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #10141a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #31353c;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#0052ff",
+                        "tertiary-fixed": "#62ff96",
+                        "surface-container-highest": "#31353c",
+                        "on-secondary-fixed-variant": "#343d96",
+                        "surface": "#10141a",
+                        "surface-container-high": "#262a31",
+                        "surface-bright": "#353940",
+                        "on-tertiary-fixed": "#00210b",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#a8afff",
+                        "surface-container-lowest": "#0a0e14",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-container": "#78ff9f",
+                        "on-surface": "#dfe2eb",
+                        "tertiary-fixed-dim": "#00e475",
+                        "surface-tint": "#b7c4ff",
+                        "surface-container-low": "#181c22",
+                        "secondary-container": "#343d96",
+                        "on-background": "#dfe2eb",
+                        "inverse-primary": "#004ced",
+                        "on-primary-fixed-variant": "#0038b6",
+                        "inverse-surface": "#dfe2eb",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "on-error": "#690005",
+                        "surface-dim": "#10141a",
+                        "on-primary": "#002682",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "secondary": "#bdc2ff",
+                        "primary-fixed": "#dde1ff",
+                        "background": "#10141a",
+                        "surface-variant": "#31353c",
+                        "on-surface-variant": "#c3c5d9",
+                        "primary": "#b7c4ff",
+                        "surface-container": "#1c2026",
+                        "outline": "#8d90a2",
+                        "on-tertiary-fixed-variant": "#005226",
+                        "on-tertiary": "#003918",
+                        "on-secondary": "#1b247f",
+                        "tertiary": "#00e475",
+                        "on-primary-fixed": "#001452",
+                        "on-primary-container": "#dfe3ff",
+                        "on-secondary-fixed": "#000767",
+                        "error": "#ffb4ab",
+                        "tertiary-container": "#007639",
+                        "outline-variant": "#434656",
+                        "inverse-on-surface": "#2d3137",
+                        "secondary-fixed": "#e0e0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="text-on-surface bg-surface antialiased">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-[#10141a]/60 backdrop-blur-xl flex justify-between items-center px-6 py-4 w-full no-border tonal-layering">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-[#b7c4ff] bg-gradient-to-br from-[#b7c4ff] to-[#0052ff] bg-clip-text text-transparent headline-font">VenueSync</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-slate-400 font-medium hover:text-white transition-colors duration-300" href="#">Map</a>
+<a class="text-slate-400 font-medium hover:text-white transition-colors duration-300" href="#">Schedule</a>
+<a class="text-[#b7c4ff] border-b-2 border-[#b7c4ff] pb-1 font-bold" href="#">Stalls</a>
+<a class="text-slate-400 font-medium hover:text-white transition-colors duration-300" href="#">Orders</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="fixed left-0 top-0 h-full z-40 bg-[#10141a] h-screen w-64 hidden lg:flex flex-col pt-24 bg-[#181c22] shadow-2xl shadow-black/40">
+<div class="px-6 mb-8">
+<h2 class="text-xs font-bold uppercase tracking-widest text-outline">Navigator</h2>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-slate-500 px-4 py-3 hover:bg-[#181c22] hover:text-white transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-inter text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-3 hover:bg-[#181c22] hover:text-white transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-inter text-sm">Event Map</span>
+</a>
+<a class="flex items-center gap-3 bg-gradient-to-r from-[#0052ff]/20 to-transparent border-l-4 border-[#b7c4ff] text-[#b7c4ff] font-bold px-4 py-3 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-inter text-sm">Food Court</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-3 hover:bg-[#181c22] hover:text-white transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-inter text-sm">My Schedule</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-3 hover:bg-[#181c22] hover:text-white transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-inter text-sm">Settings</span>
+</a>
+</nav>
+<div class="p-6">
+<button class="w-full py-3 bg-primary-container text-white rounded-xl font-bold text-sm shadow-lg shadow-primary-container/20 active:scale-95 transition-transform duration-200">
+                Order Now
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:pl-64 pt-24 min-h-screen">
+<div class="max-w-7xl mx-auto px-6 pb-24">
+<!-- Hero Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div>
+<h1 class="text-5xl md:text-6xl font-extrabold tracking-tighter headline-font text-on-surface mb-2">Food Court</h1>
+<p class="text-on-surface-variant font-medium text-lg">Curated dining and precision fuel for attendees.</p>
+</div>
+<!-- Search & Filters -->
+<div class="w-full md:w-auto flex flex-col sm:flex-row gap-3">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors" data-icon="search">search</span>
+<input class="w-full sm:w-80 bg-surface-container-low border-none rounded-full py-3 pl-12 pr-6 text-on-surface focus:ring-2 focus:ring-primary-container transition-all" placeholder="Search stalls or cuisines..." type="text"/>
+</div>
+<button class="bg-surface-container-high px-6 py-3 rounded-full flex items-center justify-center gap-2 hover:bg-surface-bright transition-colors text-sm font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+                        Filters
+                    </button>
+</div>
+</div>
+<!-- Cuisine Chips -->
+<div class="flex gap-3 overflow-x-auto pb-8 no-scrollbar">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full text-sm font-bold whitespace-nowrap">All Cuisines</button>
+<button class="bg-surface-container-low hover:bg-surface-container-high px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors">Italian</button>
+<button class="bg-surface-container-low hover:bg-surface-container-high px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors">Japanese</button>
+<button class="bg-surface-container-low hover:bg-surface-container-high px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors">Vegan</button>
+<button class="bg-surface-container-low hover:bg-surface-container-high px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors">Mexican</button>
+<button class="bg-surface-container-low hover:bg-surface-container-high px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors">Artisan Coffee</button>
+<button class="bg-surface-container-low hover:bg-surface-container-high px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors">Indian</button>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Stall Grid & Quick Pickups -->
+<div class="lg:col-span-8 space-y-12">
+<!-- Quick Pickups Section -->
+<section>
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-tertiary" data-icon="bolt">bolt</span>
+<h3 class="text-xl font-bold headline-font uppercase tracking-wider">Quick Pickups</h3>
+<div class="h-[1px] flex-1 bg-surface-variant/30"></div>
+<span class="text-tertiary text-xs font-bold animate-pulse px-2 py-1 bg-tertiary-container/20 rounded">LIVE STATUS</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Quick Card 1 -->
+<div class="bg-surface-container-high p-5 rounded-xl flex items-center gap-4 group hover:bg-surface-bright transition-all cursor-pointer">
+<div class="w-16 h-16 rounded-lg overflow-hidden shrink-0">
+<img alt="Quick stall" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="close-up of colorful street tacos with fresh lime and cilantro on a dark slate plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCovKkOlr1EQB6OcxmffA7GCeAQ5Eg3KdZTNjUl9w6YCUYZqhelx4fjWejHwj5XfBkceD7EHg1JZHLChds3MW9-GInqZxfYabIg3QqPtqJSjHgOzobPm5tZ_R_BTVmEd3O8UQijClE3hpcwwKSMZVXufRFV6eCE42gDl2Xy3F6reK2LfHrlhNpNGlfazPGr9C38lBGvm0fl0ncci1wXK75GbeDEFh3IR5QN_c7VN7l1zT85NmHTr4maj6WZyRo13SzDvNODR3l3SKKE"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-on-surface truncate">Neon Taco Fusion</h4>
+<p class="text-xs text-on-surface-variant">Mexican • <span class="text-tertiary-fixed font-bold">3 mins wait</span></p>
+</div>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<!-- Quick Card 2 -->
+<div class="bg-surface-container-high p-5 rounded-xl flex items-center gap-4 group hover:bg-surface-bright transition-all cursor-pointer">
+<div class="w-16 h-16 rounded-lg overflow-hidden shrink-0">
+<img alt="Quick stall" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="vibrant matcha green tea latte with intricate latte art in a minimalist ceramic cup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBY3gWksqS_UyHynuyRePMOXlWsrFcgXRYWcr0-b2ig3T5CI6fZTSN7zcmronIZ-HifspwzL--1Yb4oUEziZnBxnNQCGVzsVS-L952ujvVSrtS2b38Qo7Db_4q_fREevKlY5tlfEDqWWDKef_THXA7GHXkkWUDuWnG-Qajq1EDce_5-uuWA7PWpSWokkWP3MNKnOiUpCBWfut2nEn7u1e53rOUiNH3jqSdQrWiSE2lc-4WYK98UHAMAL2fNLCD9Ykrm1dqTU-_A1D0"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-on-surface truncate">The Green Press</h4>
+<p class="text-xs text-on-surface-variant">Juice &amp; Bowls • <span class="text-tertiary-fixed font-bold">Ready Now</span></p>
+</div>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</section>
+<!-- Main Grid -->
+<section>
+<div class="flex items-center gap-4 mb-6">
+<h3 class="text-xl font-bold headline-font uppercase tracking-wider">All Venues</h3>
+<div class="h-[1px] flex-1 bg-surface-variant/30"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface-container-high rounded-2xl overflow-hidden group hover:shadow-2xl hover:shadow-black/60 transition-all duration-300">
+<div class="relative h-48">
+<img alt="Stall Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="gorgeous high-end sushi platter with fresh sashimi and nigiri arranged artistically on a dark wood board" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMlg1HDBmHq6ukUyE7b5SM_VgJbuXY2__KOP55xmSeUoj_NB95myS2CgdhvsSdM6I5W259H4_A3FWw1r8sZOSdB0otCMkLb6V3qbT6f-oBqjqCqdZWi7wszlBercxi_g2ploy11gbiDBlwKtA0SXQ2_UnBjJgrN75leqMEQ9caG6qRsg5jqmVgYEHstXzHEsmT9JFUqqr1OruQPmHNKObrsp9-Ps-EJF2O1UBfoFXtSkWVV_slp9x8s_y83s-U1jv9nLHhxfen8Akq"/>
+<div class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+                                        12 mins
+                                    </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="text-xl font-bold text-on-surface">Kyoto Precision</h4>
+<p class="text-sm text-on-surface-variant">Japanese • Sushi &amp; Ramen</p>
+</div>
+<div class="flex items-center gap-1 text-primary-fixed">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="text-sm font-bold">4.9</span>
+</div>
+</div>
+<div class="mt-6 flex gap-3">
+<button class="flex-1 bg-primary-container text-on-primary-container py-3 rounded-xl font-bold text-sm hover:brightness-110 active:scale-95 transition-all">
+                                            View Menu
+                                        </button>
+<button class="w-12 h-12 flex items-center justify-center bg-surface-variant rounded-xl text-on-surface hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-high rounded-2xl overflow-hidden group hover:shadow-2xl hover:shadow-black/60 transition-all duration-300">
+<div class="relative h-48">
+<img alt="Stall Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="rustic gourmet pizza with fresh mozzarella and basil leaves being pulled away with cheese stretching" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCmxqOXJK67jFLyMfBnigWqKTVqA7RxctWOx2QB-rygE3MHXEYOa0JFtBqYmVQIbf9YqcE8ZmzT0iIsjU0t0t4DSd7gNcxWZtbHXlPoSza70Fv0Sk1gKTXyMbmSAJUtJACkGr1oooDZetUgbWDnjWQF15WZ4m4uPVILJVIARTSYnIhTxLPlO03lOFkVABN7XjGLzdPL-gO1-VT-e0iT42PTgDyOmxWBqoTkFsjH9jFSMPkL0fgMSwrtan5DkrQjGFAr5oiIz2FSkvA"/>
+<div class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+                                        25 mins
+                                    </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="text-xl font-bold text-on-surface">Milano Hearth</h4>
+<p class="text-sm text-on-surface-variant">Italian • Wood-fired Pizza</p>
+</div>
+<div class="flex items-center gap-1 text-primary-fixed">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="text-sm font-bold">4.7</span>
+</div>
+</div>
+<div class="mt-6 flex gap-3">
+<button class="flex-1 bg-primary-container text-on-primary-container py-3 rounded-xl font-bold text-sm hover:brightness-110 active:scale-95 transition-all">
+                                            View Menu
+                                        </button>
+<button class="w-12 h-12 flex items-center justify-center bg-surface-variant rounded-xl text-on-surface hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-high rounded-2xl overflow-hidden group hover:shadow-2xl hover:shadow-black/60 transition-all duration-300">
+<div class="relative h-48">
+<img alt="Stall Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="modern vibrant salad bowl with avocado, quinoa, and colorful vegetables in a matte black ceramic bowl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdLYfiNpjXwfvuaNEyDDCok3thPyzkGKx1zIIOdQMp3Aj4qX-EwLDwD5I5pUBBLOZUQbxYGThWEJeQVNvQLrVyg4xbyjCPFEx8Fu9up57CI1CNGfDnXGsKnoI69u63n5mX96zsXfRyJ3FcfwunCGI2KeDVxw_4ledN0c6ao1x_hN5Qj-0PlDSKG0V5IlaB-0USCq07-nzX9LAGR4UIYAXnVHJ0EYQlpLHsyFCL5Jc5u3_q1OX8aMlH3ap2Oopore8YfV5Kix2mKWGp"/>
+<div class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+                                        8 mins
+                                    </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="text-xl font-bold text-on-surface">Garden Matrix</h4>
+<p class="text-sm text-on-surface-variant">Vegan • Organic Bowls</p>
+</div>
+<div class="flex items-center gap-1 text-primary-fixed">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="text-sm font-bold">4.8</span>
+</div>
+</div>
+<div class="mt-6 flex gap-3">
+<button class="flex-1 bg-primary-container text-on-primary-container py-3 rounded-xl font-bold text-sm hover:brightness-110 active:scale-95 transition-all">
+                                            View Menu
+                                        </button>
+<button class="w-12 h-12 flex items-center justify-center bg-surface-variant rounded-xl text-on-surface hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-high rounded-2xl overflow-hidden group hover:shadow-2xl hover:shadow-black/60 transition-all duration-300">
+<div class="relative h-48">
+<img alt="Stall Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="bowl of steaming spicy red curry with tofu and aromatic herbs on a textured dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqFf18giW7PiSGv4GYZtdaAox1feWVNmbZubSjp4SvuiV_0LqYE9UWqEOUWB0XQ-fLG314tAdDo7jKrK5Y4qpTaemTszsdiLrgU9_LZYIvSgx0MpSUpsnfKWk1NxerAoMZc13ijqgsftIobRKUN08guDQ5xWqhnk5NlYtMr0Fy-7l7VTOLwk9OToQUGLMLZHDOLR-q2ogzjhISvhNREnwieIIyXmfu6Z_Ba0xVtKAPvHqTbKEF2QwINXLjHvYfwmibfIKDblubxEHR"/>
+<div class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+                                        15 mins
+                                    </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="text-xl font-bold text-on-surface">Spice Route Labs</h4>
+<p class="text-sm text-on-surface-variant">Indian • Fusion Curry</p>
+</div>
+<div class="flex items-center gap-1 text-primary-fixed">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="text-sm font-bold">4.6</span>
+</div>
+</div>
+<div class="mt-6 flex gap-3">
+<button class="flex-1 bg-primary-container text-on-primary-container py-3 rounded-xl font-bold text-sm hover:brightness-110 active:scale-95 transition-all">
+                                            View Menu
+                                        </button>
+<button class="w-12 h-12 flex items-center justify-center bg-surface-variant rounded-xl text-on-surface hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Map & Contextual Info -->
+<div class="lg:col-span-4 space-y-8">
+<!-- Map Snippet -->
+<div class="bg-surface-container-high rounded-3xl overflow-hidden shadow-2xl relative">
+<div class="p-6 pb-0">
+<h3 class="font-bold headline-font mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="near_me">near_me</span>
+                                Your Location
+                            </h3>
+</div>
+<div class="h-64 w-full bg-surface-container-highest relative">
+<!-- Simulated Map UI -->
+<img alt="Map" class="w-full h-full object-cover opacity-50 grayscale contrast-125" data-alt="minimalist dark blue stylized map with glowing teal and pink paths and digital markers" data-location="Tokyo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf1MQnpxdNFwYoDcVBT-JCQdEEzQCXIj96OBXAG973vZAeQ5cNh5rH6LoMgG73zK3AP4o6CWDUSSOKhkfeOp2-3xf4vl4IAQnak3L-88-RZv11-6_GBUX2hq4VESF75y2AUcrQIeYzOW-2sSe8VHonALmGD2ZYqv6ZIiLuGkPMyQgkOlVNUCOGEzCFaoYqU0rM_PQf-hZWwo8Kr9cvM11hFotoAjPfHEqYFFUXZ9tT9GmvG3MnFVO3wLJSVDcztL8leCWGVx0vAOb4"/>
+<!-- Overlay Map Elements -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-high/80 to-transparent pointer-events-none"></div>
+<!-- User Pointer -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(0,82,255,0.6)] animate-pulse">
+<div class="w-2 h-2 bg-white rounded-full"></div>
+</div>
+<div class="bg-primary-container text-white text-[10px] px-2 py-1 rounded-md mt-2 font-bold uppercase">You</div>
+</div>
+<!-- Stall Marker -->
+<div class="absolute top-1/3 right-1/4">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-tertiary-fixed text-2xl drop-shadow-md" data-icon="location_on" data-weight="fill">location_on</span>
+<div class="bg-surface-bright/90 backdrop-blur-md text-[10px] px-2 py-1 rounded-md mt-1 border border-white/10 font-bold whitespace-nowrap">Food Court North</div>
+</div>
+</div>
+</div>
+<div class="p-6">
+<p class="text-sm text-on-surface-variant flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-sm" data-icon="directions_walk">directions_walk</span>
+                                2 mins walk from Main Stage
+                            </p>
+<button class="w-full py-3 bg-surface-variant hover:bg-surface-bright transition-colors rounded-xl text-sm font-bold flex items-center justify-center gap-2">
+                                Open Full Map
+                                <span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Trending Section -->
+<div class="bg-[#181c22] rounded-3xl p-6 border border-white/5">
+<h3 class="font-bold headline-font mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" data-icon="trending_up">trending_up</span>
+                            Trending Now
+                        </h3>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container-highest rounded-full flex items-center justify-center font-bold text-primary">01</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Cyber Ramen</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">34 orders in last 10m</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container-highest rounded-full flex items-center justify-center font-bold text-primary">02</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Liquid Gold Coffee</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">High demand</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Dietary Legend -->
+<div class="p-6">
+<h4 class="text-xs font-bold uppercase tracking-widest text-outline mb-4">Dietary Legend</h4>
+<div class="grid grid-cols-2 gap-y-3">
+<div class="flex items-center gap-2 text-xs">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<span class="text-on-surface-variant">Vegan (VG)</span>
+</div>
+<div class="flex items-center gap-2 text-xs">
+<div class="w-2 h-2 rounded-full bg-primary-fixed"></div>
+<span class="text-on-surface-variant">Gluten Free (GF)</span>
+</div>
+<div class="flex items-center gap-2 text-xs">
+<div class="w-2 h-2 rounded-full bg-orange-400"></div>
+<span class="text-on-surface-variant">Keto Friendly</span>
+</div>
+<div class="flex items-center gap-2 text-xs">
+<div class="w-2 h-2 rounded-full bg-red-500"></div>
+<span class="text-on-surface-variant">Spicy Level</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom NavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-low/80 backdrop-blur-2xl z-50 flex justify-around items-center px-4 py-3">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="text-[10px] font-bold">Map</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="text-[10px] font-bold">Event</span>
+</a>
+<div class="relative -top-8">
+<button class="w-16 h-16 bg-primary-container text-white rounded-full shadow-2xl shadow-primary-container/40 flex items-center justify-center">
+<span class="material-symbols-outlined scale-125" data-icon="restaurant" data-weight="fill">restaurant</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-[10px] font-bold">Orders</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</a>
+</nav>
+</body></html>

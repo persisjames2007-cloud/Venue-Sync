@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VenueSync | Reviews &amp; Feedback</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#a8afff",
+                      "primary-fixed": "#dde1ff",
+                      "surface-bright": "#353940",
+                      "tertiary-fixed": "#62ff96",
+                      "on-primary-fixed": "#001452",
+                      "surface": "#10141a",
+                      "on-secondary-fixed": "#000767",
+                      "secondary-container": "#343d96",
+                      "tertiary-container": "#007639",
+                      "background": "#10141a",
+                      "outline": "#8d90a2",
+                      "secondary": "#bdc2ff",
+                      "on-tertiary": "#003918",
+                      "on-tertiary-fixed-variant": "#005226",
+                      "error": "#ffb4ab",
+                      "surface-dim": "#10141a",
+                      "on-primary-container": "#dfe3ff",
+                      "tertiary": "#00e475",
+                      "on-primary-fixed-variant": "#0038b6",
+                      "on-surface": "#dfe2eb",
+                      "surface-container-lowest": "#0a0e14",
+                      "surface-container-high": "#262a31",
+                      "primary-container": "#0052ff",
+                      "on-background": "#dfe2eb",
+                      "primary": "#b7c4ff",
+                      "on-secondary-fixed-variant": "#343d96",
+                      "on-error": "#690005",
+                      "inverse-primary": "#004ced",
+                      "inverse-surface": "#dfe2eb",
+                      "inverse-on-surface": "#2d3137",
+                      "surface-container-highest": "#31353c",
+                      "primary-fixed-dim": "#b7c4ff",
+                      "surface-tint": "#b7c4ff",
+                      "on-tertiary-container": "#78ff9f",
+                      "secondary-fixed": "#e0e0ff",
+                      "secondary-fixed-dim": "#bdc2ff",
+                      "on-tertiary-fixed": "#00210b",
+                      "on-surface-variant": "#c3c5d9",
+                      "on-primary": "#002682",
+                      "tertiary-fixed-dim": "#00e475",
+                      "surface-variant": "#31353c",
+                      "on-error-container": "#ffdad6",
+                      "surface-container": "#1c2026",
+                      "outline-variant": "#434656",
+                      "on-secondary": "#1b247f",
+                      "surface-container-low": "#181c22",
+                      "error-container": "#93000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        .glass-panel {
+            background: rgba(49, 53, 60, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #10141a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #31353c;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<div class="flex min-h-screen">
+<!-- SideNavBar - Identity Anchor -->
+<aside class="hidden md:flex flex-col h-screen w-64 left-0 sticky bg-[#181c22] py-8 z-50">
+<div class="px-6 mb-10">
+<div class="text-lg font-black text-white uppercase tracking-tighter mb-1">Tech Summit 2024</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Live Now</span>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 text-slate-500 py-3 px-6 hover:bg-[#262a31] hover:text-slate-200 transition-all font-label text-xs uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined text-xl">map</span>
+<span>Map</span>
+</a>
+<a class="flex items-center gap-4 text-slate-500 py-3 px-6 hover:bg-[#262a31] hover:text-slate-200 transition-all font-label text-xs uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-slate-500 py-3 px-6 hover:bg-[#262a31] hover:text-slate-200 transition-all font-label text-xs uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined text-xl">notifications</span>
+<span>Alerts</span>
+</a>
+<a class="flex items-center gap-4 text-slate-500 py-3 px-6 hover:bg-[#262a31] hover:text-slate-200 transition-all font-label text-xs uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span>Control Panel</span>
+</a>
+<a class="flex items-center gap-4 bg-[#262a31] text-[#b7c4ff] rounded-r-full py-3 px-6 border-l-4 border-[#0052FF] font-label text-xs uppercase tracking-widest active:scale-95" href="#">
+<span class="material-symbols-outlined text-xl">person</span>
+<span>Profile</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full bg-error-container text-on-error-container py-4 rounded-xl font-bold text-xs uppercase tracking-tighter hover:brightness-110 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">emergency</span>
+                    Emergency Broadcast
+                </button>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-w-0">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-[#10141a]/60 backdrop-blur-xl flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#b7c4ff] font-headline">VenueSync</span>
+<nav class="hidden lg:flex items-center gap-6 font-['Manrope'] text-sm tracking-tight">
+<a class="text-slate-400 font-medium hover:text-white transition-colors duration-200" href="#">Map</a>
+<a class="text-slate-400 font-medium hover:text-white transition-colors duration-200" href="#">Dashboard</a>
+<a class="text-slate-400 font-medium hover:text-white transition-colors duration-200" href="#">Alerts</a>
+<a class="text-slate-400 font-medium hover:text-white transition-colors duration-200" href="#">Control Panel</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#b7c4ff] hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="professional male portrait with clean lighting and neutral background for user profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU-ky_K3F2PXMxSbbmKJeVh7JbsDupFSBtGCKXR4woKDPI1ngQVcgmGaFD4A3D6wwn1zB5I512gV_BfCJgqQ-9970RRmRozJ7Zkz5lAxOQHVIVT_e_XsSiiYMDSHgbojZCxkm9nGjX6G5k-TwATP38-jDXhOL9-YqXzelUMChKGYwGaJxAPAU-Hm2_JinsjvgOhX_-c8BX8NKTDsknI_NBrqlvRHM8ySgdvoIPUhI3FVN-jNg1qH7dWnb9itOTRAVtqG2_ub-7sZAz"/>
+</div>
+</div>
+</header>
+<div class="p-6 lg:p-10 space-y-10 max-w-7xl mx-auto w-full">
+<!-- Hero Section: Editorial Scale -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+<div class="lg:col-span-8">
+<span class="text-primary font-bold uppercase tracking-[0.2em] text-[10px] mb-4 block">Feedback Loop</span>
+<h1 class="font-headline font-extrabold text-5xl md:text-7xl tracking-tighter text-on-surface leading-tight">
+                            Voice of the <br/><span class="text-primary-fixed">Summit.</span>
+</h1>
+<p class="mt-6 text-on-surface-variant text-lg max-w-xl font-light leading-relaxed">
+                            Your perspective drives our evolution. Share your experience across the summit ecosystem to help us refine the future of human connection.
+                        </p>
+</div>
+<div class="lg:col-span-4 bg-surface-container-high p-8 rounded-xl border-l-4 border-tertiary">
+<h3 class="text-tertiary font-bold text-sm mb-2">Community Impact</h3>
+<p class="text-on-surface text-2xl font-headline font-bold">Your contribution matters</p>
+<p class="text-on-surface-variant text-xs mt-2 leading-snug italic">"Every review helps another attendee find their way."</p>
+</div>
+</section>
+<!-- Insights Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Satisfaction Chart Card -->
+<div class="bg-surface-container-low p-6 rounded-xl relative overflow-hidden group">
+<div class="relative z-10">
+<h4 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-6">Overall Satisfaction</h4>
+<div class="flex items-end gap-1 h-32 mb-4">
+<div class="w-full bg-primary/20 rounded-t-sm h-[40%] group-hover:bg-primary transition-all duration-500"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[65%] group-hover:bg-primary transition-all duration-500 delay-75"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[55%] group-hover:bg-primary transition-all duration-500 delay-100"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[90%] group-hover:bg-primary transition-all duration-500 delay-150"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[75%] group-hover:bg-primary transition-all duration-500 delay-200"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[85%] group-hover:bg-primary transition-all duration-500 delay-300"></div>
+</div>
+<div class="flex justify-between items-baseline">
+<span class="text-4xl font-headline font-black text-on-surface">4.8</span>
+<span class="text-tertiary text-xs font-bold">+12% vs last year</span>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 text-surface-container-high opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[120px]">leaderboard</span>
+</div>
+</div>
+<!-- Trending Topics Card -->
+<div class="bg-surface-container-low p-6 rounded-xl flex flex-col">
+<h4 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-6">Trending Feedback</h4>
+<div class="space-y-4 flex-1">
+<div class="flex justify-between items-center">
+<span class="text-sm">Main Stage Acoustics</span>
+<span class="bg-tertiary-container text-on-tertiary-container px-2 py-0.5 rounded-full text-[10px] font-bold">POSITIVE</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-tertiary w-[88%] h-full"></div>
+</div>
+<div class="flex justify-between items-center pt-2">
+<span class="text-sm">Networking Lounge Space</span>
+<span class="bg-primary-container text-on-primary-container px-2 py-0.5 rounded-full text-[10px] font-bold">MIXED</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary w-[52%] h-full"></div>
+</div>
+</div>
+</div>
+<!-- User Stats -->
+<div class="bg-surface-container-low p-6 rounded-xl flex flex-col justify-center text-center border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">stars</span>
+<div class="text-3xl font-headline font-bold mb-1">1,402</div>
+<div class="text-xs text-on-surface-variant uppercase tracking-widest">Reviews Contributed</div>
+<div class="mt-4 flex -space-x-2 justify-center">
+<img alt="U1" class="w-8 h-8 rounded-full border-2 border-surface-container-low" data-alt="close up headshot of diverse professional male looking forward with a slight smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmRpBuWS6NxxUgbK-6yWEQD8KPyRZW-Se5iBWwPVjTqH5JII3kFMXmaw5QExRfcI9x_eaCjmWt4M9KNE15okyKrnzGJUQ1duZ1P63FoglQJN3J7B3LJesKM0-n4Q09JJwh6WqflWJoPvPmOC1_ZpMYaFjEaFsAMN0d5tlJTFBkWvcpIUv8SxhRXUYSEgdqLG1gkJI_wPSGcKnYwtzYqloNpsHC86TJjxL_MupcfukoJc6M3vRPPb32-MOfxXitahEq0qnS52FqHUjJ"/>
+<img alt="U2" class="w-8 h-8 rounded-full border-2 border-surface-container-low" data-alt="vibrant portrait of a smiling young woman with professional attire and soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-J2G3Y3wQDwzpN8aX02XH96Be94tPiVxpVBynBk0hXCyOvHF9K0AXBWG26KjHf7vgTHYCkDsVm3_NH3lqjpsyYDYhOs7DG8csPVoPTy0Y2j9PYRr2sgBrhHuBQtOXPVfRI5YbMBpnwSj0_bxqAFwpkjFanaXw8QHZZ-WUYxfvK8kWfxE5o8LLF8STW5l81ctCyWCVNS9NOpavuEJSUqijb--EtaIOejik0B0F91ox2jfEvK4EXllvBHLOFsX0SMx2Sed0e6uoRweb"/>
+<img alt="U3" class="w-8 h-8 rounded-full border-2 border-surface-container-low" data-alt="clean headshot of man with glasses and neutral expression in studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqvoX8fCwUTv7SS7Kk6F08zbKa3xV04zlqLzUsljiJeGPmHbQoYCA0EU-3UmbvM8RSjQfNAgn1L88Ny43HqhcKYURZ9BpDSykelAp2QAcY1v58IcfT8KJmuYr3A061Xb7kFNhhcI9Z26ATbH5AhDy4riqHOajN5PWElBeB7YwqXAvdJd9T-Dyejo8ku5gjf6zniIISF9U71vqhEPLpwUgQKRmK9AbTjSe1_Ily_no26frUiwKkT6ISLeTqLIg9XxnzC5jAUikZZJxF"/>
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-low bg-surface-container-high flex items-center justify-center text-[10px] font-bold text-primary">+1k</div>
+</div>
+</div>
+</section>
+<!-- Feedback Input Area -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+<!-- Submission Form -->
+<div class="lg:col-span-7 space-y-8">
+<div class="flex items-center gap-4 mb-4">
+<div class="h-12 w-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined filled-icon">edit_square</span>
+</div>
+<h2 class="text-2xl font-headline font-bold">Log Your Experience</h2>
+</div>
+<!-- Event Rating -->
+<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 space-y-6">
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-primary mb-4">Event Organization</label>
+<div class="flex gap-4">
+<button class="group p-2 bg-surface-container-high rounded-xl hover:bg-primary/20 transition-all active:scale-95">
+<span class="material-symbols-outlined text-3xl text-slate-500 group-hover:text-primary transition-colors">sentiment_very_dissatisfied</span>
+</button>
+<button class="group p-2 bg-surface-container-high rounded-xl hover:bg-primary/20 transition-all active:scale-95">
+<span class="material-symbols-outlined text-3xl text-slate-500 group-hover:text-primary transition-colors">sentiment_dissatisfied</span>
+</button>
+<button class="group p-2 bg-surface-container-high rounded-xl hover:bg-primary/20 transition-all active:scale-95">
+<span class="material-symbols-outlined text-3xl text-slate-500 group-hover:text-primary transition-colors">sentiment_neutral</span>
+</button>
+<button class="group p-2 bg-surface-container-high rounded-xl hover:bg-primary/20 transition-all active:scale-95">
+<span class="material-symbols-outlined text-3xl text-slate-500 group-hover:text-primary transition-colors">sentiment_satisfied</span>
+</button>
+<button class="group p-2 bg-primary/20 border-2 border-primary/50 rounded-xl transition-all active:scale-95">
+<span class="material-symbols-outlined text-3xl text-primary filled-icon">sentiment_very_satisfied</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Food &amp; Beverage</label>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary filled-icon">star</span>
+<span class="material-symbols-outlined text-primary filled-icon">star</span>
+<span class="material-symbols-outlined text-primary filled-icon">star</span>
+<span class="material-symbols-outlined text-primary filled-icon">star</span>
+<span class="material-symbols-outlined text-slate-600">star</span>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Facilities &amp; Navigation</label>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary filled-icon">star</span>
+<span class="material-symbols-outlined text-primary filled-icon">star</span>
+<span class="material-symbols-outlined text-primary filled-icon">star</span>
+<span class="material-symbols-outlined text-primary filled-icon">star</span>
+<span class="material-symbols-outlined text-primary filled-icon">star</span>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Detailed Remarks</label>
+<textarea class="w-full bg-surface-container-high border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary placeholder:text-on-surface-variant/40" placeholder="Tell us more about your experience..." rows="4"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-xl font-bold font-headline hover:shadow-[0px_24px_48px_rgba(0,0,0,0.4)] transition-all flex items-center justify-center gap-2 group active:scale-95">
+<span>Submit Contribution</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">send</span>
+</button>
+</div>
+</div>
+<!-- Recent Feedback Feed -->
+<div class="lg:col-span-5 flex flex-col">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-2xl font-headline font-bold">Pulse Feed</h2>
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-[10px] font-bold tracking-widest text-on-surface-variant">REAL-TIME</span>
+</div>
+<div class="space-y-6 max-h-[700px] overflow-y-auto pr-2 custom-scrollbar">
+<!-- Review 1 -->
+<div class="bg-surface-container-low p-6 rounded-xl border-l-2 border-tertiary">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full overflow-hidden bg-slate-800">
+<img alt="Sarah J." data-alt="smiling woman with glasses and professional attire in a corporate office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArWKPedKBXCwupIasov1s_ZMKINlt70ksNATFs36e9w-uE281QXUwyU-0s5i4kW7hj0DVkX9GtbKNd13X2i_PSsLMjltdeMAnhVnDeOioZnqpKokviMnvpmkIRQ7LlMkWDx6Cwr-Qn0YEf82163C_8tpBfvd9oauWwMopHtVlDlMYEe9FrhKKybQVFDRxnHY3KAZgAjYjTmZKBMuXRGGNA3ATBRLuKdBTpaBLxrzHVefI1D4Q91_YllId0p9FivFC9wB4askNtA1WO"/>
+</div>
+<div>
+<div class="text-sm font-bold">Sarah Jenkins</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Product Lead @ Nexus</div>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary filled-icon">star</span>
+<span class="text-xs font-bold text-tertiary">5.0</span>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                    The networking lounge in Hall B is a game changer. Exceptional layout and the coffee from the digital kiosk was actually barista quality!
+                                </p>
+<div class="mt-4 flex gap-2">
+<span class="text-[10px] bg-surface-container-high px-2 py-0.5 rounded uppercase font-bold text-slate-400">#Facilities</span>
+<span class="text-[10px] bg-surface-container-high px-2 py-0.5 rounded uppercase font-bold text-slate-400">#Food</span>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="bg-surface-container-low p-6 rounded-xl border-l-2 border-primary">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full overflow-hidden bg-slate-800">
+<img alt="Marcus T." data-alt="relaxed man in creative studio environment with soft natural lighting and neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIt-gtC3NQIq57RaLyAuMlX3-5mDPAmjf1vcvfewv76ngvD0QOfRJyRxWwmWVr_9svLnfm9Y0LPlL9Vi1-BwpZmq9eZ6HSVZ6ib4vMU5--FqvPeCtMEhVSoRzhHAMDEObJJL5-yHaL5wmDSHyqZi9dqkAvMIX3wV-Q4cdcObLWnHWpaukVwns0YMsq5DbtkXOHKN0pGUDyrFO412YywN54npaIZggNteFCnNMpe8D460peysM2bypBF6-PhQQYtNyMkVfQweorRZYG"/>
+</div>
+<div>
+<div class="text-sm font-bold">Marcus Thorne</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Independent Developer</div>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary filled-icon">star</span>
+<span class="text-xs font-bold text-primary">4.0</span>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                    Main stage lighting was a bit too aggressive during the morning panels, but the content has been incredible. Map app is very responsive.
+                                </p>
+<div class="mt-4 flex gap-2">
+<span class="text-[10px] bg-surface-container-high px-2 py-0.5 rounded uppercase font-bold text-slate-400">#Navigation</span>
+<span class="text-[10px] bg-surface-container-high px-2 py-0.5 rounded uppercase font-bold text-slate-400">#Panels</span>
+</div>
+</div>
+<!-- Review 3 -->
+<div class="bg-surface-container-low p-6 rounded-xl border-l-2 border-tertiary">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full overflow-hidden bg-slate-800">
+<img alt="Elena V." data-alt="woman in thoughtful pose with warm window light and artistic studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATDu4KtujJwpNzs4zqIj0kKEvJwSefrFUqqElgKn0xFQzi2WzS2t8GY2JAaHm_NiqfWNVUqUh5i8120aksdg7feT-xb05rx_lsYtxVZSJOHIrP2d7rJ_F5efZ2wxBREtJsfeufKIQbZNy14ixBTHWgCfuWxNtT-EhHS7SufHwUkAcf81Mvt7fQ9Hu78tPg6PJLKNaU2y83nmGrJia1M0GkmSN6UQozh1LMBeXlpMnVGvAOi90J_1MYx3HJjauunxTMixdgJi-iOx2q"/>
+</div>
+<div>
+<div class="text-sm font-bold">Elena Vasquez</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-tighter">CTO, GreenTech</div>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary filled-icon">star</span>
+<span class="text-xs font-bold text-tertiary">5.0</span>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                    Best summit organization I've seen in years. The transition between sessions was seamless.
+                                </p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<footer class="mt-auto py-10 px-6 border-t border-outline-variant/5 bg-surface-container-lowest text-center">
+<div class="text-xl font-bold tracking-tighter text-[#b7c4ff] mb-4 font-headline">VenueSync</div>
+<div class="flex justify-center gap-6 text-xs font-bold uppercase tracking-widest text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms</a>
+<a class="hover:text-primary transition-colors" href="#">Support</a>
+</div>
+<p class="mt-6 text-[10px] text-slate-600 uppercase tracking-widest">© 2024 VENUESYNC PLATFORM. ALL RIGHTS RESERVED.</p>
+</footer>
+</main>
+</div>
+<!-- Mobile Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 glass-panel border-t border-white/5 z-50 flex justify-around items-center py-4 px-2">
+<a class="flex flex-col items-center gap-1 text-slate-400 transition-colors" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="text-[10px] uppercase font-bold">Map</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] uppercase font-bold">Dash</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#b7c4ff] bg-primary/10 rounded-xl px-4 py-1 transition-colors" href="#">
+<span class="material-symbols-outlined filled-icon">person</span>
+<span class="text-[10px] uppercase font-bold">Profile</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] uppercase font-bold">Panel</span>
+</a>
+</nav>
+</body></html>

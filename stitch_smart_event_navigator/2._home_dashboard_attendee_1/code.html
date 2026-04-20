@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VenueSync - Global Tech Summit 2024</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-secondary-container": "#a8afff",
+                "primary-fixed": "#dde1ff",
+                "surface-bright": "#353940",
+                "tertiary-fixed": "#62ff96",
+                "on-primary-fixed": "#001452",
+                "surface": "#10141a",
+                "on-secondary-fixed": "#000767",
+                "secondary-container": "#343d96",
+                "tertiary-container": "#007639",
+                "background": "#10141a",
+                "outline": "#8d90a2",
+                "secondary": "#bdc2ff",
+                "on-tertiary": "#003918",
+                "on-tertiary-fixed-variant": "#005226",
+                "error": "#ffb4ab",
+                "surface-dim": "#10141a",
+                "on-primary-container": "#dfe3ff",
+                "tertiary": "#00e475",
+                "on-primary-fixed-variant": "#0038b6",
+                "on-surface": "#dfe2eb",
+                "surface-container-lowest": "#0a0e14",
+                "surface-container-high": "#262a31",
+                "primary-container": "#0052ff",
+                "on-background": "#dfe2eb",
+                "primary": "#b7c4ff",
+                "on-secondary-fixed-variant": "#343d96",
+                "on-error": "#690005",
+                "inverse-primary": "#004ced",
+                "inverse-surface": "#dfe2eb",
+                "inverse-on-surface": "#2d3137",
+                "surface-container-highest": "#31353c",
+                "primary-fixed-dim": "#b7c4ff",
+                "surface-tint": "#b7c4ff",
+                "on-tertiary-container": "#78ff9f",
+                "secondary-fixed": "#e0e0ff",
+                "secondary-fixed-dim": "#bdc2ff",
+                "on-tertiary-fixed": "#00210b",
+                "on-surface-variant": "#c3c5d9",
+                "on-primary": "#002682",
+                "tertiary-fixed-dim": "#00e475",
+                "surface-variant": "#31353c",
+                "on-error-container": "#ffdad6",
+                "surface-container": "#1c2026",
+                "outline-variant": "#434656",
+                "on-secondary": "#1b247f",
+                "surface-container-low": "#181c22",
+                "error-container": "#93000a"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "fontFamily": {
+                "headline": ["Manrope"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(49, 53, 60, 0.6);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- TopNavBar Shell -->
+<header class="w-full top-0 sticky bg-[#10141a]/60 backdrop-blur-xl z-50 flex justify-between items-center px-6 py-4 shadow-[0px_24px_48px_rgba(0,0,0,0.4)]">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#b7c4ff] font-headline">VenueSync</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-[#b7c4ff] font-bold border-b-2 border-[#b7c4ff] pb-1 font-headline text-sm tracking-tight transition-colors duration-200" href="#">Map</a>
+<a class="text-slate-400 font-medium font-headline text-sm tracking-tight hover:text-white transition-colors duration-200" href="#">Dashboard</a>
+<a class="text-slate-400 font-medium font-headline text-sm tracking-tight hover:text-white transition-colors duration-200" href="#">Alerts</a>
+<a class="text-slate-400 font-medium font-headline text-sm tracking-tight hover:text-white transition-colors duration-200" href="#">Control Panel</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-slate-400 hover:text-white transition-transform active:scale-95" data-icon="notifications">notifications</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User profile switcher" data-alt="professional portrait of a tech executive wearing a modern headset in a high-tech office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe7caEYNieuaiFDto3Bz9RrnOo3HNFtmOcfyDmuZ5nx9R0pEuzmATqRoXbo61kVRNAUjro-3Ap_9N9Wz7wqNWMN9Wflq3YQCkk-bO3iKxgZfDG6K12IswSpZK-ark7KbB1fCrkBWHeAg7c-ZGksPa_xv-mk3ne1fuR85oj-YKqPbEkYAvBv3ohNB8y25Bi2RHmO3RTPZenQm9YITbTiVKmWss_TYRvLBwkoqd0KLBr-MM9FlqfqfBxBLFVZrgLaawgCNiZbLJW3nTT"/>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Hero Section: Event Branding -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<div class="relative overflow-hidden rounded-xl h-80 flex flex-col justify-end p-8 bg-surface-container-high group">
+<img alt="Summit Venue" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-40 group-hover:scale-105 transition-transform duration-700" data-alt="large futuristic conference hall with blue neon lighting and high-tech stage screens at a global summit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgMBPocyulsHU8ko0iZ_QfD0tp26zzqxOgJtrHOiZgpb2kBo6jyPAxQyqi4233OZJtnDlFhSwpCxNRWNNEbmhlE7TzbXMOJu5EmMksexRxvtIPTCbtP2BagGLheqz42pGzntRQ978x4eAM0wEi0_yry-yArKh6Eum9cLv4BYLgsLVJAFt0nQW_ZCKm_uk-R4_g42nXgPaoftXtiACFzBJPZR6FCuFJQcEpV7K-WMk90M0nMW0YhDLt9KLf7KbxEcJtbYnCt_VjS1kE"/>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+                            Live Now
+                        </span>
+</div>
+<h1 class="text-5xl font-extrabold tracking-tight text-white mb-2 leading-none">Global Tech Summit 2024</h1>
+<div class="flex flex-wrap items-center gap-6 text-on-surface-variant font-medium">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="calendar_today">calendar_today</span>
+                            Oct 24 - 26
+                        </div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="schedule">schedule</span>
+                            09:00 AM - 06:00 PM
+                        </div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+                            Tech City Convention Center
+                        </div>
+</div>
+</div>
+</div>
+<!-- Quick Actions Bento Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-all active:scale-95 group">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center mb-3 group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="map">map</span>
+</div>
+<span class="text-sm font-bold tracking-tight">Map</span>
+</button>
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-all active:scale-95 group">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/20 flex items-center justify-center mb-3 group-hover:bg-tertiary-container transition-colors">
+<span class="material-symbols-outlined text-tertiary group-hover:text-white" data-icon="restaurant">restaurant</span>
+</div>
+<span class="text-sm font-bold tracking-tight">Food</span>
+</button>
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-all active:scale-95 group relative">
+<div class="absolute top-4 right-4 w-2 h-2 bg-error rounded-full"></div>
+<div class="w-12 h-12 rounded-full bg-secondary-container/20 flex items-center justify-center mb-3 group-hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-secondary group-hover:text-white" data-icon="notifications_active">notifications_active</span>
+</div>
+<span class="text-sm font-bold tracking-tight">Alerts</span>
+</button>
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-all active:scale-95 group">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center mb-3 group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-on-surface group-hover:text-on-primary-fixed" data-icon="rate_review">rate_review</span>
+</div>
+<span class="text-sm font-bold tracking-tight">Reviews</span>
+</button>
+</div>
+<!-- Current Map Context -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden p-1">
+<div class="flex items-center justify-between p-4 px-6">
+<h3 class="text-lg font-bold">Real-time Crowd Density</h3>
+<span class="text-xs text-on-surface-variant bg-surface-container-high px-2 py-1 rounded">Last updated 2 mins ago</span>
+</div>
+<div class="h-64 bg-surface-container-high rounded-lg relative overflow-hidden">
+<img alt="Convention Map" class="w-full h-full object-cover grayscale opacity-50" data-alt="minimalist architectural blueprint style map of a large convention center with subtle data visualization overlays" data-location="Tech City" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANG2d4zFnKLecAbTzQMflDHYDarlg7Zkit5bjHZcd7Z8itpbPbXRLr9LprYyDC5rz7xTP6yfzjsUjtp7dPLLbuNWCPF2C56C-I0ISCtm0J4U4vKG3RVy_5Yy2sq4B45P-47nzn0JtXHSI9YP66GVTIYZD_7EjKVDHT3wA6XLOjLFlZQPhIMjlepT-akt-VM3FkqktXmfKvLU2KFtZOha29lt-Sx5mertj2b7RkP0my5Sat8s7sJPnosGKCLHZb_WFcOZCp8xFQsQ2l"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+<div class="relative flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="location_pin" style="font-variation-settings: 'FILL' 1;">location_pin</span>
+<div class="bg-surface px-3 py-1 rounded-full text-xs font-bold border border-primary/30 mt-2 shadow-xl">You are here: Hall A</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Live Updates -->
+<aside class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col gap-6 sticky top-24">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-bold tracking-tight">Live Updates</h2>
+<span class="material-symbols-outlined text-primary-fixed" data-icon="rss_feed">rss_feed</span>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Update Item -->
+<div class="bg-surface-container-high p-4 rounded-xl border-l-4 border-primary">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-primary uppercase tracking-widest">Announcement</span>
+<span class="text-[10px] text-on-surface-variant">10:45 AM</span>
+</div>
+<p class="text-sm font-medium leading-relaxed">Keynote by Sarah Chen starting in 15 minutes in the Main Plenary. Seats are filling fast!</p>
+</div>
+<!-- Delay Update -->
+<div class="bg-surface-container-high p-4 rounded-xl border-l-4 border-error">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-error uppercase tracking-widest">Potential Delay</span>
+<span class="text-[10px] text-on-surface-variant">10:20 AM</span>
+</div>
+<p class="text-sm font-medium leading-relaxed">Workshop 'AI Ethics' in Room 302 is delayed by 10 minutes due to technical setup.</p>
+</div>
+<!-- Info Update -->
+<div class="bg-surface-container-high p-4 rounded-xl border-l-4 border-tertiary">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-tertiary uppercase tracking-widest">Logistics</span>
+<span class="text-[10px] text-on-surface-variant">09:55 AM</span>
+</div>
+<p class="text-sm font-medium leading-relaxed">Lunch service now active at the Terrace Buffet and North Food Court.</p>
+</div>
+<!-- Update Item -->
+<div class="bg-surface-container-high p-4 rounded-xl border-l-4 border-secondary">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-secondary uppercase tracking-widest">Community</span>
+<span class="text-[10px] text-on-surface-variant">09:30 AM</span>
+</div>
+<p class="text-sm font-medium leading-relaxed">Networking mixer officially open in the Hub Lounge. Grab a coffee and connect!</p>
+</div>
+</div>
+<button class="w-full py-4 rounded-xl bg-surface-container-highest text-sm font-bold hover:bg-surface-bright transition-colors border border-outline-variant/10">
+                    View Archive
+                </button>
+</div>
+<!-- Ad/Promo Card -->
+<div class="relative overflow-hidden rounded-xl p-6 bg-gradient-to-br from-secondary-container to-primary-container h-40 flex flex-col justify-end">
+<img alt="Networking" class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-overlay" data-alt="abstract crowd shot with bokeh lights and silhouettes of people enjoying an evening tech gala" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs1xQOEnPaPSyI0DUObteVFLN4t1KK7uZSY6HcwvKISc-nsyuQKoV2zR0r231T6EeRnNWPqDCBBTQ3rliaRN9IDblvHXL5JD-2Bo_AlFUDqbD86hBODGuQYJ7YQQFZ5GMt3igD_OOBW3VoKYOlsgoE22zK2VEzAwhvVbhOk0hDD24fCL00KSbBcj2jI0HONnn6ME7MSTch4x3Id9f7RTr5Y8AKvl559Mx2RgCG-I6YRzZtfU6DisFfQat8Ntvepw1ixMntm7O_y6eF"/>
+<p class="text-xs font-bold uppercase tracking-widest text-primary-fixed mb-1">Coming Tonight</p>
+<h4 class="text-lg font-bold text-white">Founder's Gala Dinner</h4>
+<p class="text-xs text-on-primary-container">Starts at 7:00 PM • Rooftop Deck</p>
+</div>
+</aside>
+</main>
+<!-- Mobile Bottom Navigation Shell -->
+<footer class="md:hidden fixed bottom-0 left-0 right-0 glass-panel border-t border-outline-variant/10 z-50">
+<div class="flex justify-around items-center h-20">
+<a class="flex flex-col items-center gap-1 text-[#b7c4ff]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="text-[10px] font-bold">Map</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="text-[10px] font-bold">Food</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</a>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OmniMap | Facilities Status</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#a8afff",
+                        "primary-fixed": "#dde1ff",
+                        "surface-bright": "#353940",
+                        "tertiary-fixed": "#62ff96",
+                        "on-primary-fixed": "#001452",
+                        "surface": "#10141a",
+                        "on-secondary-fixed": "#000767",
+                        "secondary-container": "#343d96",
+                        "tertiary-container": "#007639",
+                        "background": "#10141a",
+                        "outline": "#8d90a2",
+                        "secondary": "#bdc2ff",
+                        "on-tertiary": "#003918",
+                        "on-tertiary-fixed-variant": "#005226",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#10141a",
+                        "on-primary-container": "#dfe3ff",
+                        "tertiary": "#00e475",
+                        "on-primary-fixed-variant": "#0038b6",
+                        "on-surface": "#dfe2eb",
+                        "surface-container-lowest": "#0a0e14",
+                        "surface-container-high": "#262a31",
+                        "primary-container": "#0052ff",
+                        "on-background": "#dfe2eb",
+                        "primary": "#b7c4ff",
+                        "on-secondary-fixed-variant": "#343d96",
+                        "on-error": "#690005",
+                        "inverse-primary": "#004ced",
+                        "inverse-surface": "#dfe2eb",
+                        "inverse-on-surface": "#2d3137",
+                        "surface-container-highest": "#31353c",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "surface-tint": "#b7c4ff",
+                        "on-tertiary-container": "#78ff9f",
+                        "secondary-fixed": "#e0e0ff",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "on-tertiary-fixed": "#00210b",
+                        "on-surface-variant": "#c3c5d9",
+                        "on-primary": "#002682",
+                        "tertiary-fixed-dim": "#00e475",
+                        "surface-variant": "#31353c",
+                        "on-error-container": "#ffdad6",
+                        "surface-container": "#1c2026",
+                        "outline-variant": "#434656",
+                        "on-secondary": "#1b247f",
+                        "surface-container-low": "#181c22",
+                        "error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pulse-indicator {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .5; transform: scale(1.2); }
+        }
+        .glass-panel {
+            background: rgba(49, 53, 60, 0.6);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky bg-[#10141a]/60 backdrop-blur-xl flex justify-between items-center px-6 py-4 z-50 shadow-[0px_24px_48px_rgba(0,0,0,0.4)]">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#b7c4ff] font-headline">OmniMap</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-slate-400 font-medium font-['Manrope'] text-sm tracking-tight hover:text-white transition-colors duration-200" href="#">Map</a>
+<a class="text-slate-400 font-medium font-['Manrope'] text-sm tracking-tight hover:text-white transition-colors duration-200" href="#">Dashboard</a>
+<a class="text-slate-400 font-medium font-['Manrope'] text-sm tracking-tight hover:text-white transition-colors duration-200" href="#">Alerts</a>
+<a class="text-[#b7c4ff] font-bold border-b-2 border-[#b7c4ff] pb-1 font-['Manrope'] text-sm tracking-tight" href="#">Control Panel</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-slate-400 active:scale-95 transition-transform" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-slate-400 active:scale-95 transition-transform" data-icon="account_circle">account_circle</button>
+</div>
+</header>
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 left-0 sticky bg-[#181c22] py-8 tonal-layering-no-borders">
+<div class="px-6 mb-8">
+<h2 class="text-lg font-black text-white font-headline">Tech Summit 2024</h2>
+<p class="text-xs font-['Inter'] font-medium uppercase tracking-widest text-tertiary">Live Now</p>
+</div>
+<nav class="flex-1 flex flex-col">
+<div class="text-slate-500 py-3 px-6 flex items-center gap-4 font-['Inter'] font-medium text-xs uppercase tracking-widest hover:bg-[#262a31] hover:text-slate-200 transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="map">map</span> Map
+                </div>
+<div class="text-slate-500 py-3 px-6 flex items-center gap-4 font-['Inter'] font-medium text-xs uppercase tracking-widest hover:bg-[#262a31] hover:text-slate-200 transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span> Dashboard
+                </div>
+<div class="text-slate-500 py-3 px-6 flex items-center gap-4 font-['Inter'] font-medium text-xs uppercase tracking-widest hover:bg-[#262a31] hover:text-slate-200 transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span> Alerts
+                </div>
+<div class="bg-[#262a31] text-[#b7c4ff] rounded-r-full py-3 px-6 border-l-4 border-[#0052FF] flex items-center gap-4 font-['Inter'] font-medium text-xs uppercase tracking-widest scale-102">
+<span class="material-symbols-outlined" data-icon="settings">settings</span> Control Panel
+                </div>
+<div class="text-slate-500 py-3 px-6 flex items-center gap-4 font-['Inter'] font-medium text-xs uppercase tracking-widest hover:bg-[#262a31] hover:text-slate-200 transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="person">person</span> Profile
+                </div>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full py-3 px-4 bg-error-container text-on-error-container rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
+                    Emergency Broadcast
+                </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 bg-surface-container-low p-6 md:p-10">
+<div class="max-w-6xl mx-auto">
+<!-- Header Section with High Contrast Editorial Style -->
+<header class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="text-primary-fixed text-xs font-bold uppercase tracking-[0.2em] mb-2 block">Facility Operations</span>
+<h1 class="text-5xl md:text-6xl font-headline font-extrabold tracking-tighter text-on-surface">Facilities Status</h1>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-high px-4 py-2 rounded-xl flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-tertiary pulse-indicator"></span>
+<span class="text-sm font-medium">94% Capacity Open</span>
+</div>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Main Facilities List (Large Span) -->
+<section class="md:col-span-8 space-y-4">
+<div class="flex items-center justify-between px-2 mb-2">
+<h3 class="font-headline font-bold text-xl">All Locations</h3>
+<button class="text-primary text-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span> Filter
+                            </button>
+</div>
+<!-- Facility Item: Vacant -->
+<div class="bg-surface-container-high p-6 rounded-xl group hover:bg-surface-bright transition-all cursor-pointer flex items-center gap-6">
+<div class="w-14 h-14 bg-surface-container-highest rounded-xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="wc">wc</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<h4 class="font-bold text-lg">Main Hall Restroom A</h4>
+<span class="bg-tertiary-container text-on-tertiary-container px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-tighter">Vacant</span>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant text-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs" data-icon="distance">distance</span> 120m</span>
+<span class="flex items-center gap-1 text-tertiary"><span class="material-symbols-outlined text-xs" data-icon="star" data-weight="fill">star</span> 4.9 Rating</span>
+</div>
+</div>
+<div class="hidden sm:flex flex-col items-end gap-1">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Last Cleaned</span>
+<span class="text-xs font-mono">14 MIN AGO</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Facility Item: Busy -->
+<div class="bg-surface-container-high p-6 rounded-xl group hover:bg-surface-bright transition-all cursor-pointer flex items-center gap-6">
+<div class="w-14 h-14 bg-surface-container-highest rounded-xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="coffee_maker">coffee_maker</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<h4 class="font-bold text-lg">Lounge Coffee Bar</h4>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-tighter">Busy</span>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant text-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs" data-icon="distance">distance</span> 450m</span>
+<span class="flex items-center gap-1 text-tertiary"><span class="material-symbols-outlined text-xs" data-icon="star" data-weight="fill">star</span> 4.2 Rating</span>
+</div>
+</div>
+<div class="hidden sm:flex flex-col items-end gap-1">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Wait Time</span>
+<span class="text-xs font-mono text-secondary">~8 MIN</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Facility Item: Maintenance -->
+<div class="bg-surface-container-high/50 p-6 rounded-xl flex items-center gap-6 opacity-80">
+<div class="w-14 h-14 bg-surface-container-highest rounded-xl flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-3xl" data-icon="elevator">elevator</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<h4 class="font-bold text-lg text-on-surface-variant">North Wing Elevator 4</h4>
+<span class="bg-error-container text-on-error-container px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-tighter">Under Maintenance</span>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant text-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs" data-icon="distance">distance</span> 2.1km</span>
+</div>
+</div>
+<div class="hidden sm:flex flex-col items-end gap-1">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Est. Completion</span>
+<span class="text-xs font-mono text-error">16:30</span>
+</div>
+</div>
+<!-- Facility Item: Vacant -->
+<div class="bg-surface-container-high p-6 rounded-xl group hover:bg-surface-bright transition-all cursor-pointer flex items-center gap-6">
+<div class="w-14 h-14 bg-surface-container-highest rounded-xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="charging_station">charging_station</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<h4 class="font-bold text-lg">Tech Lab Hub C</h4>
+<span class="bg-tertiary-container text-on-tertiary-container px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-tighter">Vacant</span>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant text-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs" data-icon="distance">distance</span> 800m</span>
+<span class="flex items-center gap-1 text-tertiary"><span class="material-symbols-outlined text-xs" data-icon="star" data-weight="fill">star</span> 4.7 Rating</span>
+</div>
+</div>
+<div class="hidden sm:flex flex-col items-end gap-1">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Units Avail.</span>
+<span class="text-xs font-mono text-tertiary">12/15</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</section>
+<!-- Sidebar / Recommendations -->
+<aside class="md:col-span-4 space-y-6">
+<!-- Map Preview Card -->
+<div class="bg-surface-container-high rounded-xl overflow-hidden aspect-square md:aspect-auto md:h-64 relative group">
+<img class="w-full h-full object-cover grayscale opacity-40 group-hover:opacity-60 transition-opacity" data-alt="Technical minimalist dark themed navigation map showing building layout with neon blue route lines and glowing points of interest" data-location="San Francisco" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpz2l2-s3fmMgApRwF6QUZ7t0jyyOksmiuzy4reXuUF6rgASTR2Gw5OQUYYP5tS879GM9sestd9CjJiLxTZ0OP4eRkFV5G0ts8nDe7qSTTgBVS9dg6NC5CikSHaqapTYNSyUPEuLxCasDeWhuiTlXNTYphX3Dc6ZSZnqtzy8kpvlCvWjeQ69bO1A4nEaBPftrjjyn5BtGG3g05aB0_WxMZMHI-6HfGKC7N_UfueWrXImQnCsE8C_ehjUrXwyu9Ox9nmDRmno1w3TUD"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-high to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-bold text-sm shadow-xl flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="my_location">my_location</span>
+                                    View Live Map
+                                </button>
+</div>
+</div>
+<!-- Recommendations Card -->
+<div class="bg-surface-container-highest p-6 rounded-xl border border-outline-variant/10">
+<h3 class="font-headline font-bold text-lg mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" data-icon="auto_awesome">auto_awesome</span>
+                                Suggested Nearby
+                            </h3>
+<p class="text-xs text-on-surface-variant mb-6">Optimized for shortest wait time and maximum cleanliness ratings.</p>
+<div class="space-y-4">
+<div class="p-3 bg-surface rounded-lg flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container-high rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl" data-icon="wc">wc</span>
+</div>
+<div class="flex-1">
+<div class="text-sm font-bold">South Exit B</div>
+<div class="text-[10px] text-tertiary font-bold">VACANT • 300m</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-sm" data-icon="near_me">near_me</span>
+</div>
+<div class="p-3 bg-surface rounded-lg flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container-high rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl" data-icon="local_drink">local_drink</span>
+</div>
+<div class="flex-1">
+<div class="text-sm font-bold">Hydration Station 2</div>
+<div class="text-[10px] text-tertiary font-bold">VACANT • 150m</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-sm" data-icon="near_me">near_me</span>
+</div>
+</div>
+</div>
+<!-- Stats/Analytics Mini-Card -->
+<div class="bg-primary-container/10 p-6 rounded-xl border border-primary/20">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="query_stats">query_stats</span>
+<span class="text-[10px] font-bold text-primary px-2 py-1 bg-primary/10 rounded uppercase">Traffic Report</span>
+</div>
+<div class="text-3xl font-headline font-black text-on-primary-container">Low Congestion</div>
+<p class="text-xs text-on-primary-container/70 mt-1">Overall campus facility usage is currently 22% below average.</p>
+</div>
+</aside>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile Bottom Navigation -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 glass-panel border-t border-outline-variant/10 flex justify-around items-center py-4 px-6 z-50">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Map</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" data-icon="dashboard" data-weight="fill">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Dash</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Alerts</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">User</span>
+</button>
+</nav>
+<!-- Floating Action Button (Only relevant on main list screens) -->
+<button class="fixed bottom-24 right-6 md:bottom-10 md:right-10 w-14 h-14 bg-primary text-on-primary rounded-full shadow-[0px_24px_48px_rgba(0,0,0,0.4)] flex items-center justify-center active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined" data-icon="report_problem">report_problem</span>
+</button>
+</body></html>

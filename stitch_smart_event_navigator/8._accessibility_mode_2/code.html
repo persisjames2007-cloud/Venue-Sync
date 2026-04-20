@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OmniMap | Accessibility Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-secondary-container": "#a8afff",
+                "primary-fixed": "#dde1ff",
+                "surface-bright": "#353940",
+                "tertiary-fixed": "#62ff96",
+                "on-primary-fixed": "#001452",
+                "surface": "#10141a",
+                "on-secondary-fixed": "#000767",
+                "secondary-container": "#343d96",
+                "tertiary-container": "#007639",
+                "background": "#10141a",
+                "outline": "#8d90a2",
+                "secondary": "#bdc2ff",
+                "on-tertiary": "#003918",
+                "on-tertiary-fixed-variant": "#005226",
+                "error": "#ffb4ab",
+                "surface-dim": "#10141a",
+                "on-primary-container": "#dfe3ff",
+                "tertiary": "#00e475",
+                "on-primary-fixed-variant": "#0038b6",
+                "on-surface": "#dfe2eb",
+                "surface-container-lowest": "#0a0e14",
+                "surface-container-high": "#262a31",
+                "primary-container": "#0052ff",
+                "on-background": "#dfe2eb",
+                "primary": "#b7c4ff",
+                "on-secondary-fixed-variant": "#343d96",
+                "on-error": "#690005",
+                "inverse-primary": "#004ced",
+                "inverse-surface": "#dfe2eb",
+                "inverse-on-surface": "#2d3137",
+                "surface-container-highest": "#31353c",
+                "primary-fixed-dim": "#b7c4ff",
+                "surface-tint": "#b7c4ff",
+                "on-tertiary-container": "#78ff9f",
+                "secondary-fixed": "#e0e0ff",
+                "secondary-fixed-dim": "#bdc2ff",
+                "on-tertiary-fixed": "#00210b",
+                "on-surface-variant": "#c3c5d9",
+                "on-primary": "#002682",
+                "tertiary-fixed-dim": "#00e475",
+                "surface-variant": "#31353c",
+                "on-error-container": "#ffdad6",
+                "surface-container": "#1c2026",
+                "outline-variant": "#434656",
+                "on-secondary": "#1b247f",
+                "surface-container-low": "#181c22",
+                "error-container": "#93000a"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "fontFamily": {
+                "headline": ["Manrope"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(49, 53, 60, 0.6);
+            backdrop-filter: blur(24px);
+        }
+        .tonal-layering-no-borders {
+            border: none !important;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<div class="flex min-h-screen">
+<!-- SideNavBar - Identity Anchor -->
+<aside class="hidden md:flex flex-col h-screen w-64 left-0 sticky bg-[#181c22] tonal-layering-no-borders py-8 z-50">
+<div class="px-6 mb-10">
+<div class="text-lg font-black text-white mb-1">Tech Summit 2024</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Live Now</span>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="text-slate-500 py-3 px-6 hover:bg-[#262a31] hover:text-slate-200 transition-all flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-['Inter'] font-medium text-xs uppercase tracking-widest">Map</span>
+</a>
+<a class="text-slate-500 py-3 px-6 hover:bg-[#262a31] hover:text-slate-200 transition-all flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Inter'] font-medium text-xs uppercase tracking-widest">Dashboard</span>
+</a>
+<a class="text-slate-500 py-3 px-6 hover:bg-[#262a31] hover:text-slate-200 transition-all flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-['Inter'] font-medium text-xs uppercase tracking-widest">Alerts</span>
+</a>
+<a class="text-slate-500 py-3 px-6 hover:bg-[#262a31] hover:text-slate-200 transition-all flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Inter'] font-medium text-xs uppercase tracking-widest">Control Panel</span>
+</a>
+<a class="bg-[#262a31] text-[#b7c4ff] rounded-r-full py-3 px-6 border-l-4 border-[#0052FF] transition-all flex items-center gap-4 scale-102 shadow-lg" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Inter'] font-medium text-xs uppercase tracking-widest">Profile</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full py-4 px-4 bg-error-container text-on-error-container rounded-xl font-bold text-xs uppercase tracking-tighter hover:brightness-110 transition-all active:scale-95">
+                    Emergency Broadcast
+                </button>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-w-0">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky flex justify-between items-center px-6 py-4 w-full z-40 bg-[#10141a]/60 backdrop-blur-xl shadow-[0px_24px_48px_rgba(0,0,0,0.4)]">
+<div class="flex items-center gap-8">
+<div class="text-xl font-bold tracking-tighter text-[#b7c4ff] font-headline uppercase">OmniMap</div>
+<div class="hidden lg:flex items-center gap-6">
+<a class="text-slate-400 font-medium font-['Manrope'] text-sm tracking-tight hover:text-white transition-colors duration-200" href="#">Map</a>
+<a class="text-slate-400 font-medium font-['Manrope'] text-sm tracking-tight hover:text-white transition-colors duration-200" href="#">Dashboard</a>
+<a class="text-slate-400 font-medium font-['Manrope'] text-sm tracking-tight hover:text-white transition-colors duration-200" href="#">Alerts</a>
+<a class="text-slate-400 font-medium font-['Manrope'] text-sm tracking-tight hover:text-white transition-colors duration-200" href="#">Control Panel</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:text-white active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-white active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<div class="p-8 max-w-7xl mx-auto w-full space-y-12">
+<!-- Accessibility Hero & Mode Toggle -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="space-y-4 max-w-2xl">
+<span class="px-4 py-1.5 rounded-full bg-primary-container/30 text-primary font-bold text-sm tracking-widest uppercase inline-block">Universal Access</span>
+<h1 class="text-5xl md:text-7xl font-black font-headline tracking-tighter text-on-surface leading-[0.9]">
+                            Inclusion by <span class="text-primary italic">Design</span>.
+                        </h1>
+<p class="text-xl text-on-surface-variant font-medium leading-relaxed">
+                            Tailor your summit experience. Our "Simplified Mode" prioritizes clear visual cues, wheelchair-optimized paths, and distraction-free navigation.
+                        </p>
+</div>
+<div class="bg-surface-container-high p-6 rounded-xl space-y-6 min-w-[320px]">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="visibility">visibility</span>
+<span class="font-bold text-lg">Simplified Mode</span>
+</div>
+<button class="w-14 h-8 bg-primary rounded-full relative flex items-center px-1 shadow-[0_0_15px_rgba(183,196,255,0.4)]">
+<div class="w-6 h-6 bg-on-primary rounded-full translate-x-6 transition-transform"></div>
+</button>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface-variant">High Contrast</span>
+<span class="text-tertiary font-bold">ACTIVE</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface-variant">Text Magnification</span>
+<span class="text-tertiary font-bold">200%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Layout: Map & Accessible Data -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Map Component (Large) -->
+<div class="lg:col-span-8 bg-surface-container-low rounded-xl overflow-hidden min-h-[600px] relative group">
+<div class="absolute inset-0 z-0">
+<img alt="Dark themed navigation map with blue glowing routes" class="w-full h-full object-cover grayscale opacity-40 group-hover:opacity-50 transition-opacity" data-alt="Modern high-contrast dark map showing architectural floor plan with highlighted blue glowing accessible pathways and neon icons" data-location="San Francisco Tech Summit Venue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWD703hT-yCHGeoKJb4lM_dvoIg_5tV02XuGBjmYDxPgj-cmzc-Ql_hiGKWfU_GxgvCxGKInHeFhPzvdbv9ZOD-eqC710n882EvJK-JEh8blbrWXz8lWdYMAtVJA-xwwOShVfI4mJk4P9x1BRChCMqFC5ySj9-m9W_dy_XG9ZdSGXByyUdDgQXUSKSZCRc5_snZFQzDfFICRxEzdYqxY-r6Ss9YFzoTpFb7bm5MwQO1XY8KuTuLAyUEFWsBrwqslnbbdSuQ_glWrRY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<!-- Map HUD Overlays -->
+<div class="absolute top-6 left-6 flex flex-col gap-3 z-10">
+<div class="glass-panel p-4 rounded-xl flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary" data-icon="accessible_forward" data-weight="fill" style="font-variation-settings: 'FILL' 1;">accessible_forward</span>
+<div>
+<div class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Current Route</div>
+<div class="text-lg font-bold">Elevator A to Hall 4</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-6 left-6 right-6 flex items-center justify-between z-10">
+<div class="flex gap-2">
+<button class="glass-panel w-12 h-12 rounded-xl flex items-center justify-center hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+<button class="glass-panel w-12 h-12 rounded-xl flex items-center justify-center hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+</div>
+<div class="flex gap-4">
+<div class="glass-panel px-6 py-3 rounded-xl flex items-center gap-3">
+<span class="w-3 h-3 rounded-full bg-primary shadow-[0_0_8px_#b7c4ff]"></span>
+<span class="text-sm font-bold">Level 1: Ramps Active</span>
+</div>
+</div>
+</div>
+<!-- Pulse Markers on Map -->
+<div class="absolute top-1/2 left-1/3 z-20">
+<div class="relative flex items-center justify-center">
+<div class="absolute w-12 h-12 bg-primary/20 rounded-full animate-ping"></div>
+<div class="w-6 h-6 bg-primary border-4 border-background rounded-full shadow-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] text-on-primary font-bold" data-icon="wc">wc</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Panels -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Accessible POIs -->
+<div class="bg-surface-container-high rounded-xl p-8 flex-1 space-y-8">
+<h3 class="text-2xl font-black font-headline tracking-tight">Nearby Facilities</h3>
+<div class="space-y-6">
+<div class="flex items-start gap-6 p-4 rounded-xl hover:bg-surface-bright transition-all group">
+<div class="w-14 h-14 bg-tertiary-container rounded-xl flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="elevator">elevator</span>
+</div>
+<div>
+<div class="font-bold text-xl mb-1">North Wing Elevator</div>
+<div class="text-on-surface-variant leading-tight">Priority access for mobility aids. Connects to Level 2.</div>
+<div class="mt-3 flex items-center gap-2">
+<span class="text-[10px] bg-tertiary/10 text-tertiary font-bold px-2 py-0.5 rounded uppercase">Clear</span>
+<span class="text-[10px] text-on-surface-variant font-medium">Wait time: &lt; 1 min</span>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-6 p-4 rounded-xl hover:bg-surface-bright transition-all group">
+<div class="w-14 h-14 bg-primary-container rounded-xl flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="accessible">accessible</span>
+</div>
+<div>
+<div class="font-bold text-xl mb-1">Seating Zone B</div>
+<div class="text-on-surface-variant leading-tight">Expanded aisle space and companion seating available.</div>
+<div class="mt-3 flex items-center gap-2">
+<span class="text-[10px] bg-tertiary/10 text-tertiary font-bold px-2 py-0.5 rounded uppercase">Available</span>
+<span class="text-[10px] text-on-surface-variant font-medium">12 spots left</span>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-6 p-4 rounded-xl hover:bg-surface-bright transition-all group">
+<div class="w-14 h-14 bg-outline-variant/30 rounded-xl flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="volume_off">volume_off</span>
+</div>
+<div>
+<div class="font-bold text-xl mb-1">Quiet Room 2</div>
+<div class="text-on-surface-variant leading-tight">Sensory-friendly space with low lighting and noise reduction.</div>
+<div class="mt-3 flex items-center gap-2">
+<span class="text-[10px] bg-outline-variant text-white font-bold px-2 py-0.5 rounded uppercase">Quiet</span>
+<span class="text-[10px] text-on-surface-variant font-medium">Located: Hall G</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Emergency Action -->
+<div class="bg-error-container/20 rounded-xl p-8 border border-error/10">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 bg-error-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-error-container" data-icon="medical_services">medical_services</span>
+</div>
+<div class="font-black text-xl text-error">Support Center</div>
+</div>
+<p class="text-on-error-container/80 text-lg mb-6">Need immediate assistance or have specific requirements?</p>
+<button class="w-full py-5 bg-error text-on-error font-black rounded-xl text-xl hover:brightness-110 active:scale-95 transition-all">
+                                Request Assistance
+                            </button>
+</div>
+</div>
+</div>
+<!-- Feature Grid: Navigation Overrides -->
+<section class="space-y-8">
+<div class="flex items-baseline gap-4">
+<h2 class="text-4xl font-black font-headline tracking-tighter">Route Optimization</h2>
+<div class="h-1 flex-1 bg-surface-container-high rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-container p-10 rounded-xl space-y-6 border-b-4 border-primary/20">
+<span class="material-symbols-outlined text-5xl text-primary" data-icon="ramp_left">ramp_left</span>
+<h4 class="text-2xl font-bold">Ramp Priority</h4>
+<p class="text-on-surface-variant text-lg leading-relaxed">Navigation algorithms are strictly locked to ramps and sloped pathways, avoiding all stairs and escalators automatically.</p>
+</div>
+<div class="bg-surface-container p-10 rounded-xl space-y-6 border-b-4 border-tertiary/20">
+<span class="material-symbols-outlined text-5xl text-tertiary" data-icon="interpreter_mode">interpreter_mode</span>
+<h4 class="text-2xl font-bold">Visual Semantics</h4>
+<p class="text-on-surface-variant text-lg leading-relaxed">All navigation markers use ultra-high contrast glyphs and secondary text descriptions for screen readers and low-vision clarity.</p>
+</div>
+<div class="bg-surface-container p-10 rounded-xl space-y-6 border-b-4 border-secondary/20">
+<span class="material-symbols-outlined text-5xl text-secondary" data-icon="hearing">hearing</span>
+<h4 class="text-2xl font-bold">Assistive Audio</h4>
+<p class="text-on-surface-variant text-lg leading-relaxed">Real-time turn-by-turn voice guidance optimized for hearing aid induction loops and low-latency Bluetooth broadcast.</p>
+</div>
+</div>
+</section>
+<!-- Inclusion Section -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-12 py-12">
+<div class="rounded-xl overflow-hidden shadow-2xl">
+<img alt="Diverse group of people in an inclusive conference environment" class="w-full h-[400px] object-cover" data-alt="Happy diverse group of professionals collaborating in a brightly lit modern glass-walled office with clear accessibility features and warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-g7f6yXqAQYISJ2dyWnjgO2KrtbJewGcVoUoHi53a3I7Q0UO8eh6Tq0iunHgnMPJgM5C1c_xtDITA5gaCSLU3Kz88HtqD1CNa_2abjAZGIo6C6xt2q4Ol3ApoZ21JrKePxRo98_XP6TnF4pOUnpwsSp0ElIURUu3WUMIrCAQTDhl2ldbaAFk8QtwqVsCHz_9TAOhnA0_jljrvOvLj1mTeAuU4tl_APTZcOghBuck8r2IHgwTamVE_GnT-t7TXhpmjP4VHEygN-kOB"/>
+</div>
+<div class="flex flex-col justify-center space-y-6">
+<h2 class="text-4xl font-black font-headline tracking-tighter leading-none">A Summit for <span class="text-tertiary">Everyone</span>.</h2>
+<p class="text-xl text-on-surface-variant leading-relaxed">
+                            We believe that technology events should be accessible to everyone, regardless of mobility, vision, or hearing capabilities. Our platform integrates directly with venue hardware to ensure your journey is seamless.
+                        </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<div class="px-6 py-3 bg-surface-container-high rounded-full font-bold flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="verified">verified</span>
+                                ADA Compliant
+                            </div>
+<div class="px-6 py-3 bg-surface-container-high rounded-full font-bold flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="closed_caption">closed_caption</span>
+                                WCAG 2.1 Level AAA
+                            </div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Meta -->
+<footer class="mt-auto py-12 px-8 bg-surface-container-lowest border-t border-outline-variant/10">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="text-xl font-bold tracking-tighter text-[#b7c4ff] font-headline uppercase opacity-50">OmniMap 2024</div>
+<div class="flex gap-8 text-sm font-medium text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Accessibility Statement</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Support Portal</a>
+</div>
+<div class="flex gap-4">
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="language">language</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="help">help</span>
+</button>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<!-- Mobile Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 glass-panel flex justify-around items-center px-4 py-3">
+<button class="flex flex-col items-center gap-1 text-slate-500 hover:text-white">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="text-[10px] font-bold uppercase">Map</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 hover:text-white">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-bold uppercase">Dash</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#b7c4ff]">
+<span class="material-symbols-outlined" data-icon="person" data-weight="fill" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-[10px] font-bold uppercase">Profile</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 hover:text-white">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[10px] font-bold uppercase">Admin</span>
+</button>
+</nav>
+</body></html>
